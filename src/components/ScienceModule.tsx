@@ -131,14 +131,16 @@ export const ScienceModule: React.FC<ScienceModuleProps> = ({
       </div>
 
       {subView === 'notes' ? (
-        <SubjectStudyBook
-          subject="conocimiento"
-          completedIds={completedIds}
-          onMarkUnitStudied={onCompleteMap}
-          onOpenGlossaryForSubject={onOpenGlossary ? () => onOpenGlossary() : undefined}
-        />
+        <div key="science-notes-tab">
+          <SubjectStudyBook
+            subject="conocimiento"
+            completedIds={completedIds}
+            onMarkUnitStudied={onCompleteMap}
+            onOpenGlossaryForSubject={onOpenGlossary ? () => onOpenGlossary() : undefined}
+          />
+        </div>
       ) : (
-        <>
+        <div key="science-maps-tab" className="space-y-8">
 
       {/* Topic Selector Strip */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -552,7 +554,7 @@ export const ScienceModule: React.FC<ScienceModuleProps> = ({
           </div>
         </div>
       </div>
-      </>
+      </div>
       )}
     </div>
   );

@@ -176,7 +176,7 @@ export const MathModule: React.FC<MathModuleProps> = ({
           </h2>
         </div>
 
-        <div className="flex items-center gap-1 p-1 bg-slate-200/75 rounded-lg self-start">
+        <div className="flex flex-wrap items-center gap-1 p-1 bg-slate-200/75 rounded-lg self-start">
           <button
             type="button"
             onClick={() => setSubTab('tables')}
@@ -199,12 +199,36 @@ export const MathModule: React.FC<MathModuleProps> = ({
           >
             2. Problemas Guiados ({MATH_WORD_PROBLEMS.length})
           </button>
+          <button
+            type="button"
+            onClick={() => setSubTab('notes')}
+            className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
+              subTab === 'notes'
+                ? 'bg-white text-[#0F172A] shadow-xs'
+                : 'text-slate-600 hover:text-[#0F172A]'
+            }`}
+          >
+            3. Temario, Apuntes y Fórmulas
+          </button>
         </div>
       </div>
 
-      {subTab === 'tables' ? (
+      {subTab === 'notes' ? (
+        <div key="math-notes-tab">
+          <SubjectStudyBook
+            subject="matematicas"
+            completedIds={completedIds}
+            onMarkUnitStudied={(unitId, xpVal) =>
+              onCompleteProblem(unitId, xpVal, 'Maestro de Fórmulas')
+            }
+            onOpenGlossaryForSubject={
+              onOpenGlossary ? () => onOpenGlossary() : undefined
+            }
+          />
+        </div>
+      ) : subTab === 'tables' ? (
         /* TWO-ZONE SANDBOX FOR MULTIPLICATION TABLES */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div key="math-tables-tab" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT STAGE (7 cols): Interactive Visual Matrix & Gamified Question */}
           <div className="lg:col-span-7 bg-white border border-[#E2E8F0] rounded-xl p-6 sm:p-8 space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 border-b border-slate-100 pb-4">
@@ -461,7 +485,7 @@ export const MathModule: React.FC<MathModuleProps> = ({
         </div>
       ) : (
         /* GUIDED 3-STEP WORD PROBLEMS SANDBOX */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div key="math-problems-tab" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT STAGE (7 cols): 3-Step Problem Solver */}
           <div className="lg:col-span-7 bg-white border border-[#E2E8F0] rounded-xl p-6 sm:p-8 space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 border-b border-slate-100 pb-4">

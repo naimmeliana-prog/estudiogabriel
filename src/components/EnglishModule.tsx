@@ -246,15 +246,17 @@ export const EnglishModule: React.FC<EnglishModuleProps> = ({
       </div>
 
       {subTab === 'notes' ? (
-        <SubjectStudyBook
-          subject="ingles"
-          completedIds={completedIds}
-          onMarkUnitStudied={onCompleteItem}
-          onOpenGlossaryForSubject={onOpenGlossary ? () => onOpenGlossary() : undefined}
-        />
+        <div key="english-notes-tab">
+          <SubjectStudyBook
+            subject="ingles"
+            completedIds={completedIds}
+            onMarkUnitStudied={onCompleteItem}
+            onOpenGlossaryForSubject={onOpenGlossary ? () => onOpenGlossary() : undefined}
+          />
+        </div>
       ) : subTab === 'pronunciation' ? (
         /* TWO-ZONE SANDBOX LAYOUT FOR PRONUNCIATION */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div key="english-pronunciation-tab" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT ZONE (7 cols): Interactive Phonetic & Oral Stage */}
           <div className="lg:col-span-7 bg-white border border-[#E2E8F0] rounded-xl p-6 sm:p-8 space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 border-b border-slate-100 pb-4">
@@ -514,7 +516,7 @@ export const EnglishModule: React.FC<EnglishModuleProps> = ({
         </div>
       ) : (
         /* GRAMMAR SENTENCE BUILDER SANDBOX */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div key="english-grammar-tab" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-7 bg-white border border-[#E2E8F0] rounded-xl p-6 sm:p-8 space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 border-b border-slate-100 pb-4">
               <div>
