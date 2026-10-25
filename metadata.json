@@ -1,0 +1,8 @@
+{
+  "name": "Blasco EduLab — Plataforma de Estudio 5º Primaria a 2º Bachillerato",
+  "description": "Plataforma educativa interactiva diseñada para el alumnado del CEIP Blasco Ibáñez de Museros (5º de Primaria hasta 2º de Bachillerato) con juegos de pronunciación y gramática en inglés, tablas y problemas matemáticos gamificados, mapas conceptuales y mnemotecnia visual en Conocimiento del Medio, y repaso adaptativo.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
