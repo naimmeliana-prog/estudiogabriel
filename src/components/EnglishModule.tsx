@@ -15,17 +15,20 @@ import {
   ENGLISH_GRAMMAR_EXERCISES,
   PronunciationItem,
 } from '../data/curriculumData';
+import { SubjectStudyBook } from './SubjectStudyBook';
 
 interface EnglishModuleProps {
   completedIds: string[];
   onCompleteItem: (id: string, xp: number) => void;
+  onOpenGlossary?: () => void;
 }
 
 export const EnglishModule: React.FC<EnglishModuleProps> = ({
   completedIds,
   onCompleteItem,
+  onOpenGlossary,
 }) => {
-  const [subTab, setSubTab] = useState<'pronunciation' | 'grammar'>('pronunciation');
+  const [subTab, setSubTab] = useState<'pronunciation' | 'grammar' | 'notes'>('pronunciation');
   const [selectedPronIndex, setSelectedPronIndex] = useState(0);
   const [speechRate, setSpeechRate] = useState<number>(0.85);
   const [isSpeaking, setIsSpeaking] = useState(false);

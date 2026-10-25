@@ -1091,8 +1091,8 @@ export const INITIAL_ADAPTIVE_FLASHCARDS: AdaptiveFlashcard[] = [
     backAnswer: 'Island suena /ÁI-land/ (la S es muda) y Climb suena /KLÁIM/ (la B final es muda).',
     mnemonicHint: 'En la isla se esconde la S; al escalar se cae la B.',
     pronunciationText: 'Climb the mountain on the island.',
-    box: 2,
-    timesCorrect: 1,
+    box: 1,
+    timesCorrect: 0,
   },
   {
     id: 'fc-eng-5',
@@ -1154,8 +1154,8 @@ export const INITIAL_ADAPTIVE_FLASHCARDS: AdaptiveFlashcard[] = [
     frontQuestion: '¿Cuánto es 9 × 7 usando el truco del ascensor de la tabla del 9?',
     backAnswer: '9 × 7 = 63. Restamos 1 al 7 (empieza por 6) y ponemos lo que falta para sumar 9 (6 + 3 = 9) → 63.',
     mnemonicHint: 'En la tabla del 9 las dos cifras siempre suman 9.',
-    box: 2,
-    timesCorrect: 1,
+    box: 1,
+    timesCorrect: 0,
   },
   {
     id: 'fc-math-4',
@@ -1239,8 +1239,8 @@ export const INITIAL_ADAPTIVE_FLASHCARDS: AdaptiveFlashcard[] = [
     frontQuestion: '¿Cómo son los ríos de la vertiente mediterránea como el Turia y el Júcar?',
     backAnswer: 'Son ríos cortos (excepto el Ebro) y de caudal irregular: sufren estiaje (poca agua) en verano y pueden tener crecidas en otoño.',
     mnemonicHint: 'Nacen cerca en el Sistema Ibérico y bajan rápido a regar la huerta.',
-    box: 2,
-    timesCorrect: 1,
+    box: 1,
+    timesCorrect: 0,
   },
   {
     id: 'fc-sci-5',
@@ -1276,8 +1276,8 @@ export const INITIAL_ADAPTIVE_FLASHCARDS: AdaptiveFlashcard[] = [
     frontQuestion: '¿Cuál es el orden de prioridad en las operaciones combinadas (Regla PAPOMUDAS)?',
     backAnswer: '1º Paréntesis, 2º Potencias y Raíces, 3º Multiplicaciones y Divisiones (de izquierda a derecha), 4º Sumas y Restas.',
     mnemonicHint: 'PA-PO-MU-D-A-S: Paréntesis, Potencias, Multiplicar, Dividir, Adición, Sustracción.',
-    box: 2,
-    timesCorrect: 1,
+    box: 1,
+    timesCorrect: 0,
   },
   {
     id: 'fc-bach-1',
@@ -1288,8 +1288,8 @@ export const INITIAL_ADAPTIVE_FLASHCARDS: AdaptiveFlashcard[] = [
     frontQuestion: '¿Qué afirma el Teorema de Bolzano para una función continua en un intervalo [a, b]?',
     backAnswer: 'Si f es continua en [a, b] y toma valores de distinto signo en los extremos (f(a)·f(b) < 0), entonces existe al menos un punto c ∈ (a, b) tal que f(c) = 0.',
     mnemonicHint: 'Para cruzar un río de una orilla negativa a otra positiva sin saltar (continua), tienes que pisar el agua (f(c)=0).',
-    box: 2,
-    timesCorrect: 1,
+    box: 1,
+    timesCorrect: 0,
   },
 ];
 

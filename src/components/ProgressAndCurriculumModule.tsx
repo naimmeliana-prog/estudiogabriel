@@ -32,6 +32,7 @@ interface ProgressAndCurriculumModuleProps {
   onChangeCurriculumYear: (year: string) => void;
   onAddCustomTopic: (gradeId: GradeId, subjectName: string, topicTitle: string) => void;
   onNavigateToModule: (tab: 'ingles' | 'matematicas' | 'conocimiento' | 'flashcards') => void;
+  onResetProgress?: () => void;
 }
 
 export const ProgressAndCurriculumModule: React.FC<
@@ -49,6 +50,7 @@ export const ProgressAndCurriculumModule: React.FC<
   onChangeCurriculumYear,
   onAddCustomTopic,
   onNavigateToModule,
+  onResetProgress,
 }) => {
   const [newTopicSubject, setNewTopicSubject] = useState<string>('Inglés');
   const [newTopicTitle, setNewTopicTitle] = useState<string>('');
@@ -70,7 +72,7 @@ export const ProgressAndCurriculumModule: React.FC<
   const mathPercent = Math.min(
     100,
     Math.round(
-      ((doneMathProblems * 15 + Math.min(totalTablesPracticed, 25)) / 100) * 100
+      ((doneMathProblems * 12.5 + Math.min(totalTablesPracticed, 25)) / 125) * 100
     )
   );
 
@@ -122,14 +124,32 @@ export const ProgressAndCurriculumModule: React.FC<
             </h2>
           </div>
 
-          <div className="flex items-center gap-4 text-xs font-mono tabular-nums bg-white border border-[#E2E8F0] px-4 py-2.5 rounded-lg">
+          <div className="flex flex-wrap items-center gap-4 text-xs font-mono tabular-nums bg-white border border-[#E2E8F0] px-4 py-2.5 rounded-lg">
             <span>
               XP Total: <strong className="text-[#0284C7]">{xp} XP</strong>
             </span>
             <span aria-hidden="true">·</span>
             <span>
-              Insignias: <strong className="text-[#059669]">{unlockedBadges.length}/5</strong>
+              Insignias:{' '}
+              <strong className="text-[#059669]">
+                {unlockedBadges.length}/{MATH_WORD_PROBLEMS.length}
+              </strong>
             </span>
+            {onResetProgress && (
+              <>
+                <span aria-hidden="true">·</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onResetProgress();
+                    setSyncMessage('● Todos los contadores de progreso se han puesto a cero (0 XP, 0%).');
+                  }}
+                  className="font-sans font-semibold text-slate-600 hover:text-[#DC2626] transition-colors whitespace-nowrap"
+                >
+                  Poner contadores a 0
+                </button>
+              </>
+            )}
           </div>
         </div>
 

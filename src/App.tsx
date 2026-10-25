@@ -33,28 +33,26 @@ type ActiveModuleTab =
   | 'flashcards'
   | 'progreso';
 
-const STORAGE_KEY = 'blasco_edulab_state_v2';
+const STORAGE_KEY = 'blasco_edulab_state_v4_zero';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveModuleTab>('ingles');
   const [glossaryInitialSubject, setGlossaryInitialSubject] = useState<
     'all' | 'ingles' | 'matematicas' | 'conocimiento'
   >('all');
-  const [xp, setXp] = useState<number>(120);
-  const [completedIds, setCompletedIds] = useState<string[]>(['pron-1']);
+  const [xp, setXp] = useState<number>(0);
+  const [completedIds, setCompletedIds] = useState<string[]>([]);
   const [tableMastery, setTableMastery] = useState<Record<number, number>>({
-    2: 5,
-    3: 3,
-    4: 2,
-    5: 5,
-    6: 1,
-    7: 1,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
     8: 0,
-    9: 2,
+    9: 0,
   });
-  const [unlockedBadges, setUnlockedBadges] = useState<string[]>([
-    'Explorador de la Albufera',
-  ]);
+  const [unlockedBadges, setUnlockedBadges] = useState<string[]>([]);
   const [flashcards, setFlashcards] = useState<AdaptiveFlashcard[]>(
     INITIAL_ADAPTIVE_FLASHCARDS
   );
@@ -67,9 +65,41 @@ export default function App() {
     Record<string, string[]>
   >({});
 
-  // Load saved state from localStorage on mount
+  const handleResetAllProgress = () => {
+    setXp(0);
+    setCompletedIds([]);
+    setTableMastery({
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+      6: 0,
+      7: 0,
+      8: 0,
+      9: 0,
+    });
+    setUnlockedBadges([]);
+    setFlashcards(
+      INITIAL_ADAPTIVE_FLASHCARDS.map((c) => ({
+        ...c,
+        box: 1,
+        timesCorrect: 0,
+      }))
+    );
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem('blasco_edulab_state_v2');
+      localStorage.removeItem('blasco_edulab_state_v1');
+    } catch {
+      // Ignore storage errors
+    }
+  };
+
+  // Load saved state from localStorage on mount (and purge legacy pre-filled keys)
   useEffect(() => {
     try {
+      localStorage.removeItem('blasco_edulab_state_v2');
+      localStorage.removeItem('blasco_edulab_state_v1');
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
@@ -227,7 +257,7 @@ export default function App() {
   const currentGradeInfo =
     ALL_GRADES_CATALOG.find((g) => g.id === selectedGrade) || ALL_GRADES_CATALOG[0];
 
-  const urgentFlashcardsCount = flashcards.filter((c) => c.box === 1).length;
+  const masteredFlashcardsCount = flashcards.filter((c) => c.box === 3).length;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A]">
@@ -312,7 +342,7 @@ export default function App() {
               onClick={() => setActiveTab('flashcards')}
               className="px-4 py-2 text-xs font-semibold text-white bg-[#0284C7] hover:bg-[#0369A1] rounded-lg transition-colors whitespace-nowrap shrink-0"
             >
-              Repaso Diario ({urgentFlashcardsCount})
+              Repaso Diario ({masteredFlashcardsCount}/{flashcards.length})
             </button>
           </div>
         </div>
@@ -345,7 +375,7 @@ export default function App() {
               <div className="text-xs">
                 <div className="text-slate-500">Experiencia Acumulada</div>
                 <div className="font-mono text-lg font-bold text-[#0284C7] tabular-nums">
-                  {xp} XP · Nivel {Math.floor(xp / 100) + 1}
+                  {xp} XP · Nivel {xp === 0 ? 0 : Math.floor(xp / 100) + 1}
                 </div>
               </div>
               <div className="h-8 w-px bg-slate-200" aria-hidden="true" />
@@ -356,6 +386,18 @@ export default function App() {
                   <span>{unlockedBadges.length} medallas</span>
                 </div>
               </div>
+              {(xp > 0 || completedIds.length > 0 || unlockedBadges.length > 0) && (
+                <>
+                  <div className="h-8 w-px bg-slate-200" aria-hidden="true" />
+                  <button
+                    type="button"
+                    onClick={handleResetAllProgress}
+                    className="text-xs font-semibold text-slate-600 hover:text-[#DC2626] transition-colors whitespace-nowrap shrink-0"
+                  >
+                    Reiniciar a 0
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
@@ -466,7 +508,7 @@ export default function App() {
                     activeTab === 'flashcards' ? 'text-sky-100' : 'text-slate-500'
                   }`}
                 >
-                  Repaso Adaptativo ({urgentFlashcardsCount})
+                  Repaso Adaptativo ({masteredFlashcardsCount}/{flashcards.length})
                 </div>
               </div>
             </button>
@@ -557,6 +599,7 @@ export default function App() {
             onChangeCurriculumYear={setCurriculumYear}
             onAddCustomTopic={handleAddCustomTopic}
             onNavigateToModule={(tab) => setActiveTab(tab)}
+            onResetProgress={handleResetAllProgress}
           />
         )}
       </main>
