@@ -31,7 +31,16 @@ interface ProgressAndCurriculumModuleProps {
   onSelectGrade: (grade: GradeId) => void;
   onChangeCurriculumYear: (year: string) => void;
   onAddCustomTopic: (gradeId: GradeId, subjectName: string, topicTitle: string) => void;
-  onNavigateToModule: (tab: 'ingles' | 'matematicas' | 'conocimiento' | 'flashcards') => void;
+  onNavigateToModule: (
+    tab: 'ingles' | 'matematicas' | 'conocimiento' | 'otras' | 'flashcards',
+    otherSubject?:
+      | 'lengua'
+      | 'valencia'
+      | 'artistica'
+      | 'educacion-fisica'
+      | 'valores'
+      | 'eso-bach'
+  ) => void;
   onResetProgress?: () => void;
 }
 
@@ -284,6 +293,40 @@ export const ProgressAndCurriculumModule: React.FC<
           </div>
         </div>
 
+        {/* All Other Subjects Quick Access Bar (Lengua, Valencià, Música/Plástica, E. Física, Valores) */}
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <div className="text-xs font-bold text-[#0284C7] uppercase">
+              Resto de Asignaturas Oficiales de 5º de Primaria y Cursos Superiores
+            </div>
+            <h3 className="text-base font-bold text-[#0F172A] mt-0.5">
+              Estudia también Lengua Castellana, Valencià, Música y Plástica, Educación Física (Pilota Valenciana) y Valores Cívicos
+            </h3>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            {[
+              { id: 'lengua', label: 'Lengua Castellana' },
+              { id: 'valencia', label: 'Valencià' },
+              { id: 'artistica', label: 'Música y Plástica' },
+              { id: 'educacion-fisica', label: 'Educación Física' },
+              { id: 'valores', label: 'Valores Cívicos' },
+              { id: 'eso-bach', label: '6º Primaria a 2º Bach.' },
+            ].map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() =>
+                  onNavigateToModule('otras', item.id as any)
+                }
+                className="px-3 py-2 bg-[#F8FAFC] hover:bg-[#0284C7] hover:text-white border border-[#E2E8F0] text-[#0F172A] text-xs font-semibold rounded-lg transition-colors flex items-center gap-1 whitespace-nowrap shrink-0"
+              >
+                <span>{item.label}</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Multiplication Tables Mastery Heatmap (2 to 9) */}
         <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
@@ -468,8 +511,40 @@ export const ProgressAndCurriculumModule: React.FC<
                     </ul>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                    {subj.annualUpdateNote}
+                  <div className="pt-3 border-t border-slate-100 space-y-2.5">
+                    <div className="text-[11px] text-slate-500">
+                      {subj.annualUpdateNote}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (activeGradeObj.id !== '5-primaria') {
+                          onNavigateToModule('otras', 'eso-bach');
+                        } else if (subj.id === '5p-eng') {
+                          onNavigateToModule('ingles');
+                        } else if (subj.id === '5p-mat') {
+                          onNavigateToModule('matematicas');
+                        } else if (subj.id === '5p-con') {
+                          onNavigateToModule('conocimiento');
+                        } else if (subj.id === '5p-len') {
+                          onNavigateToModule('otras', 'lengua');
+                        } else if (subj.id === '5p-val') {
+                          onNavigateToModule('otras', 'valencia');
+                        } else if (subj.id === '5p-art') {
+                          onNavigateToModule('otras', 'artistica');
+                        } else if (subj.id === '5p-ef') {
+                          onNavigateToModule('otras', 'educacion-fisica');
+                        } else if (subj.id === '5p-vce') {
+                          onNavigateToModule('otras', 'valores');
+                        } else {
+                          onNavigateToModule('otras', 'lengua');
+                        }
+                      }}
+                      className="w-full py-2 px-3 bg-[#0284C7]/10 hover:bg-[#0284C7] text-[#0284C7] hover:text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5"
+                    >
+                      <span>Estudiar y Practicar {subj.name.split(' (')[0]}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
               );

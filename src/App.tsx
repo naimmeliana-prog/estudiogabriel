@@ -7,6 +7,7 @@ import {
   BarChart3,
   Award,
   BookOpen,
+  GraduationCap,
 } from 'lucide-react';
 import {
   INITIAL_ADAPTIVE_FLASHCARDS,
@@ -24,21 +25,39 @@ import { ScienceModule } from './components/ScienceModule';
 import { FlashcardsModule } from './components/FlashcardsModule';
 import { ProgressAndCurriculumModule } from './components/ProgressAndCurriculumModule';
 import { InteractiveGlossaryModule } from './components/InteractiveGlossaryModule';
+import { OtherSubjectsModule } from './components/OtherSubjectsModule';
 
 type ActiveModuleTab =
   | 'ingles'
   | 'matematicas'
   | 'conocimiento'
+  | 'otras'
   | 'glosario'
   | 'flashcards'
   | 'progreso';
 
-const STORAGE_KEY = 'blasco_edulab_state_v4_zero';
+const STORAGE_KEY = 'blasco_edulab_state_v5_zero';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveModuleTab>('ingles');
+  const [otherInitialSubject, setOtherInitialSubject] = useState<
+    | 'lengua'
+    | 'valencia'
+    | 'artistica'
+    | 'educacion-fisica'
+    | 'valores'
+    | 'eso-bach'
+  >('lengua');
   const [glossaryInitialSubject, setGlossaryInitialSubject] = useState<
-    'all' | 'ingles' | 'matematicas' | 'conocimiento'
+    | 'all'
+    | 'ingles'
+    | 'matematicas'
+    | 'conocimiento'
+    | 'lengua'
+    | 'valencia'
+    | 'artistica'
+    | 'educacion-fisica'
+    | 'valores'
   >('all');
   const [xp, setXp] = useState<number>(0);
   const [completedIds, setCompletedIds] = useState<string[]>([]);
@@ -219,12 +238,17 @@ export default function App() {
     newTerm: Omit<GlossaryTerm, 'id' | 'visualIconType'>
   ) => {
     const defaultIcons: Record<
-      'ingles' | 'matematicas' | 'conocimiento',
+      GlossaryTerm['subject'],
       GlossaryTerm['visualIconType']
     > = {
       ingles: 'eng-verb-s',
       matematicas: 'multiplication-grid',
       conocimiento: 'sci-ecosystem',
+      lengua: 'lengua-sintaxis',
+      valencia: 'valencia-apostrof',
+      artistica: 'musica-figuras',
+      'educacion-fisica': 'ef-pilota',
+      valores: 'valores-convivencia',
     };
     const created: GlossaryTerm = {
       ...newTerm,
@@ -236,7 +260,16 @@ export default function App() {
   };
 
   const handleOpenGlossaryForSubject = (
-    subj: 'all' | 'ingles' | 'matematicas' | 'conocimiento'
+    subj:
+      | 'all'
+      | 'ingles'
+      | 'matematicas'
+      | 'conocimiento'
+      | 'lengua'
+      | 'valencia'
+      | 'artistica'
+      | 'educacion-fisica'
+      | 'valores'
   ) => {
     setGlossaryInitialSubject(subj);
     setActiveTab('glosario');
@@ -313,6 +346,17 @@ export default function App() {
             </button>
             <button
               type="button"
+              onClick={() => setActiveTab('otras')}
+              className={`hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0 py-1 border-b-2 ${
+                activeTab === 'otras'
+                  ? 'border-[#0284C7] text-[#0F172A] font-semibold'
+                  : 'border-transparent'
+              }`}
+            >
+              Lengua, Valencià y +
+            </button>
+            <button
+              type="button"
               onClick={() => handleOpenGlossaryForSubject('all')}
               className={`hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0 py-1 border-b-2 ${
                 activeTab === 'glosario'
@@ -321,17 +365,6 @@ export default function App() {
               }`}
             >
               Glosario y Apuntes
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('progreso')}
-              className={`hover:text-[#0F172A] transition-colors whitespace-nowrap shrink-0 py-1 border-b-2 ${
-                activeTab === 'progreso'
-                  ? 'border-[#0284C7] text-[#0F172A] font-semibold'
-                  : 'border-transparent'
-              }`}
-            >
-              Progreso y Cursos
             </button>
           </nav>
 
@@ -401,8 +434,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* Interactive Module Switcher Cards (6 Modules) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-1">
+          {/* Interactive Module Switcher Cards (7 Modules) */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 pt-1">
             <button
               type="button"
               onClick={() => setActiveTab('ingles')}
@@ -471,6 +504,28 @@ export default function App() {
 
             <button
               type="button"
+              onClick={() => setActiveTab('otras')}
+              className={`p-3 rounded-xl border text-left transition-colors flex items-center gap-2.5 ${
+                activeTab === 'otras'
+                  ? 'bg-[#0284C7] border-[#0284C7] text-white'
+                  : 'bg-[#F8FAFC] border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
+              }`}
+            >
+              <GraduationCap className="w-4 h-4 shrink-0" />
+              <div className="min-w-0">
+                <div className="text-xs font-bold truncate">4. Lengua, Valencià y +</div>
+                <div
+                  className={`text-[11px] truncate ${
+                    activeTab === 'otras' ? 'text-sky-100' : 'text-slate-500'
+                  }`}
+                >
+                  Música, E. Física, Valores y ESO
+                </div>
+              </div>
+            </button>
+
+            <button
+              type="button"
               onClick={() => handleOpenGlossaryForSubject('all')}
               className={`p-3 rounded-xl border text-left transition-colors flex items-center gap-2.5 ${
                 activeTab === 'glosario'
@@ -480,7 +535,7 @@ export default function App() {
             >
               <BookOpen className="w-4 h-4 shrink-0" />
               <div className="min-w-0">
-                <div className="text-xs font-bold truncate">4. Glosario y Apuntes</div>
+                <div className="text-xs font-bold truncate">5. Glosario y Apuntes</div>
                 <div
                   className={`text-[11px] truncate ${
                     activeTab === 'glosario' ? 'text-sky-100' : 'text-slate-500'
@@ -502,7 +557,7 @@ export default function App() {
             >
               <Layers className="w-4 h-4 shrink-0" />
               <div className="min-w-0">
-                <div className="text-xs font-bold truncate">5. Tarjetas</div>
+                <div className="text-xs font-bold truncate">6. Tarjetas</div>
                 <div
                   className={`text-[11px] truncate ${
                     activeTab === 'flashcards' ? 'text-sky-100' : 'text-slate-500'
@@ -524,7 +579,7 @@ export default function App() {
             >
               <BarChart3 className="w-4 h-4 shrink-0" />
               <div className="min-w-0">
-                <div className="text-xs font-bold truncate">6. Progreso y Cursos</div>
+                <div className="text-xs font-bold truncate">7. Progreso y Cursos</div>
                 <div
                   className={`text-[11px] truncate ${
                     activeTab === 'progreso' ? 'text-sky-100' : 'text-slate-500'
@@ -567,8 +622,19 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'otras' && (
+          <OtherSubjectsModule
+            key={otherInitialSubject}
+            completedIds={completedIds}
+            initialSubject={otherInitialSubject}
+            onCompleteActivity={handleCompleteItem}
+            onOpenGlossaryForSubject={handleOpenGlossaryForSubject}
+          />
+        )}
+
         {activeTab === 'glosario' && (
           <InteractiveGlossaryModule
+            key={glossaryInitialSubject}
             glossaryTerms={glossaryTerms}
             completedIds={completedIds}
             initialSubjectFilter={glossaryInitialSubject}
@@ -598,7 +664,12 @@ export default function App() {
             onSelectGrade={setSelectedGrade}
             onChangeCurriculumYear={setCurriculumYear}
             onAddCustomTopic={handleAddCustomTopic}
-            onNavigateToModule={(tab) => setActiveTab(tab)}
+            onNavigateToModule={(tab, otherSubject) => {
+              if (tab === 'otras' && otherSubject) {
+                setOtherInitialSubject(otherSubject);
+              }
+              setActiveTab(tab);
+            }}
             onResetProgress={handleResetAllProgress}
           />
         )}

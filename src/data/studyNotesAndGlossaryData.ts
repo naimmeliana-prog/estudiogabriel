@@ -45,7 +45,15 @@ export interface GlossaryTerm {
   id: string;
   term: string;
   englishAudioText?: string;
-  subject: 'ingles' | 'matematicas' | 'conocimiento';
+  subject:
+    | 'ingles'
+    | 'matematicas'
+    | 'conocimiento'
+    | 'lengua'
+    | 'valencia'
+    | 'artistica'
+    | 'educacion-fisica'
+    | 'valores';
   subjectLabel: string;
   subCategory:
     | 'Vocabulario Esencial'
@@ -53,7 +61,10 @@ export interface GlossaryTerm {
     | 'Operaciones y Cálculo'
     | 'Resolución y Geometría'
     | 'Naturaleza y Seres Vivos'
-    | 'Sociedad, Geografía e Historia';
+    | 'Sociedad, Geografía e Historia'
+    | 'Ortografía, Sintaxis y Literatura'
+    | 'Valencià i Cultura'
+    | 'Música, Arte, Deporte y Valores';
   clearDefinition: string;
   example: string;
   memoryTrickOrFormula: string;
@@ -75,7 +86,12 @@ export interface GlossaryTerm {
     | 'sci-cell'
     | 'sci-society-population'
     | 'sci-river-relief'
-    | 'sci-sectors-huerta';
+    | 'sci-sectors-huerta'
+    | 'lengua-sintaxis'
+    | 'valencia-apostrof'
+    | 'musica-figuras'
+    | 'ef-pilota'
+    | 'valores-convivencia';
 }
 
 export const COMPLETE_STUDY_UNITS: StudyUnitNotes[] = [
@@ -1632,6 +1648,1264 @@ export const COMPLETE_STUDY_UNITS: StudyUnitNotes[] = [
       '¡Usa siempre el truco de "tapar las 2 últimas cifras y sumar +1" para no fallar nunca el siglo en los exámenes de Historia!',
     ],
   },
+
+  // ============================================================================
+  // LENGUA CASTELLANA Y LITERATURA · 6 UNIDADES COMPLETAS DE 5º DE PRIMARIA
+  // ============================================================================
+  {
+    id: 'notes-len-u1',
+    subject: 'lengua',
+    subjectName: 'Lengua Castellana y Literatura',
+    trimester: '1º Trimestre',
+    unitNumber: 'Unidad 1',
+    title: 'Reglas Generales de Acentuación: Agudas, Llanas y Esdrújulas',
+    quickSummary:
+      'Aprendemos a localizar la sílaba tónica de cualquier palabra y a aplicar sin dudar la regla N-S-Vocal para saber cuándo poner tilde en palabras agudas, llanas y esdrújulas.',
+    detailedNotes: [
+      {
+        heading: '1. Sílaba Tónica vs. Sílabas Átonas (El método de la palmada)',
+        points: [
+          'La SÍLABA TÓNICA es aquella que pronunciamos con mayor fuerza de voz en una palabra. Las demás sílabas se llaman ÁTONAS.',
+          'Contamos siempre la posición de la sílaba tónica de DERECHA A IZQUIERDA: 1ª Última (Aguda) · 2ª Penúltima (Llana) · 3ª Antepenúltima (Esdrújula).',
+        ],
+      },
+      {
+        heading: '2. Cuándo llevan tilde las Agudas, Llanas y Esdrújulas',
+        points: [
+          'PALABRAS AGUDAS (fuerza en la última sílaba): Llevan tilde cuando terminan en N, en S o en VOCAL (a, e, i, o, u). Ejemplos con tilde: ca-mión, com-pás, co-ли-brí. Sin tilde: re-loj, ca-lor.',
+          'PALABRAS LLANAS (fuerza en la penúltima sílaba): Llevan tilde cuando NO terminan ni en N, ni en S, ni en VOCAL (es decir, cuando terminan en cualquier otra consonante como l, r, z, d, c). Ejemplos con tilde: ár-bol, lá-piz, cés-ped, fá-cil. Sin tilde: ca-sa, exa-men.',
+          'PALABRAS ESDRÚJULAS Y SOBRESDRÚJULAS (fuerza en la antepenúltima o anterior): ¡Llevan tilde SIEMPRE sin excepción! Ejemplos: mú-si-ca, pá-ja-ro, ма-te-má-ti-cas, brú-ju-la.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-len-1',
+        title: 'Esquema E-L-A y Regla N-S-Vocal',
+        formulaExpression: 'Aguda (+ tilde si acaba en N, S, Vocal)  |  Llana (+ tilde si NO acaba en N, S, Vocal)  |  Esdrújula (SIEMPRE tilde)',
+        explanation: 'Las agudas y las llanas son exactamente opuestas con las letras N, S y Vocal.',
+        exampleCalculation: 'balón (aguda en -n: tilde) · azúcar (llana en -r: tilde) · plátano (esdrújula: tilde)',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Clasifica y pon tilde a "camion", "arbol", "lampara" y "reloj"',
+        problemOrQuestion: 'Separa en sílabas, rodea la sílaba tónica y explica por qué lleva o no lleva tilde cada palabra.',
+        stepByStepSolution: [
+          '1º ca-MIÓN → Aguda terminada en -N → Lleva tilde (camión).',
+          '2º ÁR-bol → Llana terminada en -L (no es N, S ni vocal) → Lleva tilde (árbol).',
+          '3º LÁM-pa-ra → Esdrújula (antepenúltima sílaba) → Lleva tilde siempre (lámpara).',
+          '4º re-LOJ → Aguda terminada en -J → NO lleva tilde (reloj).',
+        ],
+        finalResult: 'camión, árbol, lámpara y reloj.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-len1-1',
+        question: '¿Por qué la palabra "CÉSPED" lleva tilde en la primera E?',
+        options: ['Porque es una palabra LLANA que termina en consonante distinta de N o S (-d)', 'Porque es una palabra aguda', 'Porque todas las palabras que empiezan por C llevan tilde'],
+        correctAnswer: 'Porque es una palabra LLANA que termina en consonante distinta de N o S (-d)',
+        explanation: 'CÉS-ped tiene la fuerza en la penúltima sílaba (llana) y acaba en -D, por lo que lleva tilde.',
+      },
+    ],
+    examTips: [
+      'Cuidado con "examen" y "exámenes": "exa-men" es llana acabada en -N (NO lleva tilde), pero en plural "e-XÁ-me-nes" pasa a ser esdrújula y SÍ lleva tilde.',
+    ],
+  },
+  {
+    id: 'notes-len-u2',
+    subject: 'lengua',
+    subjectName: 'Lengua Castellana y Literatura',
+    trimester: '1º Trimestre',
+    unitNumber: 'Unidad 2',
+    title: 'Diptongos, Triptongos e Hiatos',
+    quickSummary:
+      'Distinguimos las vocales abiertas o fuertes (A, E, O) de las cerradas o débiles (I, U) para saber cuándo dos vocales van juntas en la misma sílaba (diptongo) y cuándo se separan en dos sílabas distintas (hiato).',
+    detailedNotes: [
+      {
+        heading: '1. Vocales Fuertes (A, E, O) y Vocales Débiles (I, U)',
+        points: [
+          'Vocales ABIERTAS o FUERTES: A, E, O (abrimos mucho la boca al pronunciarlas).',
+          'Vocales CERRADAS o DÉBILES: I, U (abrimos poquito la boca).',
+        ],
+      },
+      {
+        heading: '2. El Diptongo (2 vocales que se quedan juntas en la misma sílaba)',
+        points: [
+          'Hay DIPTONGO cuando se unen: Vocal Fuerte + Débil átona (ai-re, Euro-pa, cau-sa), Débil átona + Fuerte (nie-ve, fue-go, via-je) o Dos Débiles distintas (ciu-dad, rui-do).',
+          'Los diptongos siguen las normas generales de acentuación (agudas, llanas, esdrújulas). Ejemplo: "ca-mión" es aguda acabada en -n.',
+        ],
+      },
+      {
+        heading: '3. El Hiato (2 vocales que se separan en sílabas distintas)',
+        points: [
+          'Tipo 1 · Dos vocales FUERTES juntas (A, E, O): Dos fuertes no caben en la misma silla y se separan siempre (te-a-tro, po-e-ta, to-a-lla, ca-no-a). Siguen las reglas normales.',
+          'Tipo 2 · Vocal Fuerte + Vocal Débil TÓNICA (Í, Ú): Cuando la fuerza de voz cae en la I o en la U, le ponemos una TILDE mágica que rompe el diptongo aunque contradiga la regla general: Ma-rí-a, ba-úl, bú-ho, ma-íz, pa-ís, grú-a.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-len-2',
+        title: 'Fórmula de Diptongo vs. Hiato',
+        formulaExpression: 'Diptongo (misma sílaba) = Fuerte + Débil átona  |  Hiato (se separan) = Fuerte + Fuerte  Ó  Fuerte + Débil con TILDE (í, ú)',
+        explanation: 'La H intercalada (como en "bú-ho" o "a-ho-ra") es transparente y no impide que haya diptongo o hiato.',
+        exampleCalculation: 'cie-lo (diptongo) · te-a-tro (hiato de 2 fuertes) · ba-úl (hiato con tilde en la ú)',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: ¿Diptongo o Hiato en "ciudad", "poema" y "había"?',
+        problemOrQuestion: 'Separa en sílabas e indica si tienen diptongo o hiato.',
+        stepByStepSolution: [
+          '1º ciu-dad → u+i son dos vocales débiles juntas → DIPTONGO.',
+          '2º po-e-ma → o+e son dos vocales fuertes → HIATO (se separan).',
+          '3º ha-bí-a → í tónica + a fuerte → HIATO con tilde obligatoria en la í.',
+        ],
+        finalResult: 'ciu-dad (diptongo), po-e-ma (hiato), ha-bí-a (hiato).',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-len2-1',
+        question: '¿Cómo se separa en sílabas correctamente la palabra "TEATRO" y qué tiene?',
+        options: ['te-a-tro (tiene un HIATO porque la E y la A son dos vocales fuertes)', 'tea-tro (tiene un diptongo)', 'te-at-ro'],
+        correctAnswer: 'te-a-tro (tiene un HIATO porque la E y la A son dos vocales fuertes)',
+        explanation: 'Dos vocales abiertas o fuertes (A, E, O) nunca van en la misma sílaba: forman siempre un hiato.',
+      },
+    ],
+    examTips: [
+      'Recuerda: las palabras con hiato de vocal cerrada tónica (Ma-rí-a, rí-o, frí-o, ba-úl, ra-íz) llevan tilde SIEMPRE en la Í o en la Ú.',
+    ],
+  },
+  {
+    id: 'notes-len-u3',
+    subject: 'lengua',
+    subjectName: 'Lengua Castellana y Literatura',
+    trimester: '2º Trimestre',
+    unitNumber: 'Unidad 3',
+    title: 'Morfología I: Sustantivos, Adjetivos, Determinantes y Pronombres',
+    quickSummary:
+      'Dominamos las clases de palabras que acompañan o sustituyen al nombre: tipos de sustantivos, grados del adjetivo y la diferencia clave entre un determinante (acompaña al nombre) y un pronombre (sustituye al nombre).',
+    detailedNotes: [
+      {
+        heading: '1. El Sustantivo (Nombre) y sus 4 Parejas de Clasificación',
+        points: [
+          'Común (río, pueblo) vs. Propio (Turia, Museros, Carla → siempre con mayúscula).',
+          'Individual (un elemento: abeja, árbol, músico) vs. Colectivo (en singular nombra un grupo: enjambre, bosque, orquesta, rebaño).',
+          'Concreto (se percibe con los sentidos: mochila, música) vs. Abstracto (sentimientos o ideas: alegría, paz, amistad).',
+        ],
+      },
+      {
+        heading: '2. El Adjetivo Calificativo y sus 3 Grados',
+        points: [
+          '1. Grado Positivo: Expresa la cualidad tal cual ("El naranjo es alto").',
+          '2. Grado Comparativo: Compara dos elementos. Puede ser de Superioridad ("más alto que"), de Igualdad ("tan alto como") o de Inferioridad ("menos alto que").',
+          '3. Grado Superlativo: Expresa la cualidad en su grado máximo con "muy" o "-ísimo/a" ("muy alto", "altísimo").',
+        ],
+      },
+      {
+        heading: '3. Determinantes vs. Pronombres (El truco del acompañante)',
+        points: [
+          'DETERMINANTE: Va SIEMPRE delante de un sustantivo acompañándolo ("ESTE libro es de MI hermana"). Tipos: Artículos (el, la, un), Demostrativos (este, ese, aquel), Posesivos (mi, tu, su), Numerales (dos, tercero) e Indefinidos (algunos, muchos).',
+          'PRONOMBRE: Va SOLO porque sustituye al sustantivo y a menudo acompaña a un verbo ("ÉL juega con ÉSTE; el libro es MÍO").',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-len-3',
+        title: 'Fórmula para no confundir Determinante y Pronombre',
+        formulaExpression: 'Palabra + SUSTANTIVO = Determinante   |   Palabra SOLA (sin sustantivo detrás) = Pronombre',
+        explanation: 'Mira siempre la palabra que va justo a la derecha.',
+        exampleCalculation: '"Aquel niño corre" (Aquel = Determinante) · "Aquel corre mucho" (Aquel = Pronombre)',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Analiza morfológicamente la palabra "REBAÑO"',
+        problemOrQuestion: 'Indica todas las características del sustantivo "rebaño".',
+        stepByStepSolution: [
+          '1º Género y número: masculino, singular.',
+          '2º Tipo: sustantivo común, concreto, contable y COLECTIVO (porque en singular nombra a un conjunto de ovejas).',
+        ],
+        finalResult: 'Sustantivo masculino, singular, común, concreto y colectivo.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-len3-1',
+        question: '¿Cuál de estas palabras es un sustantivo COLECTIVO?',
+        options: ['Bosque (conjunto de árboles en singular)', 'Árboles (está en plural, pero es individual)', 'Alegría'],
+        correctAnswer: 'Bosque (conjunto de árboles en singular)',
+        explanation: 'Un sustantivo colectivo va en SINGULAR (el bosque, la jauría, el enjambre) pero designa un grupo.',
+      },
+    ],
+    examTips: [
+      '¡No caigas en la trampa de los plurales! "Abejas" NO es colectivo (es individual en plural). El colectivo en singular es "enjambre".',
+    ],
+  },
+  {
+    id: 'notes-len-u4',
+    subject: 'lengua',
+    subjectName: 'Lengua Castellana y Literatura',
+    trimester: '2º Trimestre',
+    unitNumber: 'Unidad 4',
+    title: 'Morfología II: El Verbo, Tiempos Verbales y Palabras Invariables',
+    quickSummary:
+      'Estudiamos el verbo (raíz, desinencia, las 3 conjugaciones, tiempos simples y compuestos), los adverbios, las preposiciones y las conjunciones.',
+    detailedNotes: [
+      {
+        heading: '1. Las 3 Conjugaciones, Raíz y Desinencia del Verbo',
+        points: [
+          '1ª Conjugación: verbos cuyo infinitivo termina en -AR (cantar, saltar, estudiar).',
+          '2ª Conjugación: verbos cuyo infinitivo termina en -ER (comer, correr, leer).',
+          '3ª Conjugación: verbos cuyo infinitivo termina en -IR (vivir, escribir, salir).',
+          'Tiempos SIMPLES (una sola palabra: "canté") vs. Tiempos COMPUESTOS (verbo auxiliar HABER + participio: "he cantado", "había comido").',
+        ],
+      },
+      {
+        heading: '2. Palabras Invariables: Adverbios, Preposiciones y Conjunciones',
+        points: [
+          'ADVERBIOS (indican circunstancias del verbo): Lugar (aquí, allí, cerca, lejos), Tiempo (hoy, ayer, mañana, pronto), Modo (bien, mal, despacio, rápidamente), Cantidad (mucho, poco, muy, bastante), Afirmación (sí, también), Negación (no, nunca) y Duda (quizás, acaso).',
+          'PREPOSICIONES (de memoria): a, ante, bajo, cabe, con, contra, de, desde, durante, en, entre, hacia, hasta, mediante, para, por, según, sin, so, sobre, tras, versus, vía.',
+          'CONJUNCIONES (unen palabras u oraciones): Copulativas (y, e, ni), Disyuntivas (o, u), Adversativas (pero, sino, aunque).',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-len-4',
+        title: 'Cómo hallar la Raíz y la Desinencia de un Verbo',
+        formulaExpression: 'Raíz = Infinitivo sin (-ar / -er / -ir)  |  Desinencia = Lo que se añade a la raíz',
+        explanation: 'Para saber la raíz de "cantábamos", ponlo en infinitivo (cant-ar), quita "-ar" → Raíz: CANT- · Desinencia: -ÁBAMOS.',
+        exampleCalculation: 'escribiremos → Infinitivo: escrib-ir → Raíz: escrib- · Desinencia: -iremos',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Analiza el verbo "HABÍAMOS JUGADO"',
+        problemOrQuestion: 'Indica persona, número, tiempo, modo y conjugación de "habíamos jugado".',
+        stepByStepSolution: [
+          '1º Persona y número: 1ª persona del plural (Nosotros/as).',
+          '2º Tiempo: Compuesto (lleva el verbo haber → pretérito pluscuamperfecto de indicativo).',
+          '3º Conjugación: Viene de "jugar" (-ar) → 1ª conjugación.',
+        ],
+        finalResult: '1ª persona del plural, tiempo compuesto del modo indicativo, 1ª conjugación (jugar).',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-len4-1',
+        question: '¿Qué tipo de palabra invariable es "MAÑANA" en la frase "Mañana iremos a la excursión"?',
+        options: ['Adverbio de tiempo', 'Preposición', 'Adjetivo calificativo'],
+        correctAnswer: 'Adverbio de tiempo',
+        explanation: 'Responde a la pregunta "¿Cuándo iremos?" → Mañana (adverbio de tiempo).',
+      },
+    ],
+    examTips: [
+      'Recita la lista de las preposiciones con ritmo ("a, ante, bajo, cabe, con, contra...") para identificarlas al instante en cualquier análisis morfológico.',
+    ],
+  },
+  {
+    id: 'notes-len-u5',
+    subject: 'lengua',
+    subjectName: 'Lengua Castellana y Literatura',
+    trimester: '3º Trimestre',
+    unitNumber: 'Unidad 5',
+    title: 'Sintaxis (Sujeto y Predicado) y Ortografía de B/V, G/J y H',
+    quickSummary:
+      'Aprende el método de los 3 pasos para analizar cualquier oración en Sujeto y Predicado (incluso cuando el Sujeto está omitido) y las reglas de oro de la B, V, G, J y H.',
+    detailedNotes: [
+      {
+        heading: '1. Análisis Sintáctico: Sujeto, Predicado y sus Núcleos',
+        points: [
+          'PASO 1: Busca primero el VERBO conjugado de la oración. El verbo es siempre el NÚCLEO DEL PREDICADO (NP).',
+          'PASO 2: Pregunta al verbo "¿Quién?" o "¿Quiénes?" realizan la acción. Eso es el SUJETO. Su palabra más importante (un sustantivo o pronombre) es el NÚCLEO DEL SUJETO (NS).',
+          'PASO 3: Todo lo que no es Sujeto (incluido el verbo) es el PREDICADO.',
+          'SUJETO OMITIDO (o Elíptico): Cuando el sujeto no está escrito en la frase pero lo sabemos por el verbo. Ejemplo: "Ayer ganamos el partido" → Sujeto Omitido: (Nosotros/as).',
+        ],
+      },
+      {
+        heading: '2. Reglas Infalibles de la B, la V y la H',
+        points: [
+          'Se escriben con B: todos los verbos pasados acabados en -ABA (cantaba, jugábamos, iban), los verbos acabados en -BIR (escribir, recibir, subir — excepto hervir, servir y vivir), y las palabras que empiezan por BU-, BUR-, BUS- (bueno, burbuja, buscar).',
+          'Se escriben con V: los adjetivos acabados en -AVA, -AVE, -AVO, -EVA, -EVE, -EVO, -IVA, -IVO (suave, nuevo, deportivo) y el pasado "estuve, anduve, tuve".',
+          'Se escriben con H: las palabras que empiezan por HIE-, HUE- (hielo, hierba, huevo, hueso, huerta) y todas las formas de los verbos HABER, HACER, HABLAR, HALLAR y HABITAR.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-len-5',
+        title: 'Fórmula de Análisis Sintáctico',
+        formulaExpression: '1º Localiza el VERBO (Núcleo del Predicado)  →  2º ¿Quién + Verbo? = SUJETO (Núcleo: Nombre)  →  3º Resto = PREDICADO',
+        explanation: 'Nunca olvides señalar el Núcleo del Sujeto (NS) y el Núcleo del Predicado (NP) debajo de la caja.',
+        exampleCalculation: '[Los alumnos de Museros] (Sujeto, NS: alumnos) [estudian en la biblioteca] (Predicado, NP: estudian).',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Analiza Sujeto y Predicado en "Viajaremos en tren mañana"',
+        problemOrQuestion: 'Indica cuál es el Sujeto y cuál es el Predicado de la oración.',
+        stepByStepSolution: [
+          '1º Verbo: "viajaremos" (Núcleo del Predicado).',
+          '2º ¿Quiénes viajaremos? → Nosotros/as. Como no está escrito, es Sujeto Omitido (Nosotros/as).',
+          '3º Toda la frase escrita ("Viajaremos en tren mañana") es el Predicado.',
+        ],
+        finalResult: 'Sujeto Omitido: (Nosotros/as) · Predicado: "Viajaremos en tren mañana" (NP: viajaremos).',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-len5-1',
+        question: '¿Cuál de estas series de verbos en "-bir" son las TRES ÚNICAS excepciones que se escriben con V?',
+        options: ['Hervir, servir y vivir', 'Escribir, recibir y subir', 'Prohibir, exhibir y escribir'],
+        correctAnswer: 'Hervir, servir y vivir',
+        explanation: 'Todos los verbos terminados en -bir se escriben con B excepto hervir, servir y vivir.',
+      },
+    ],
+    examTips: [
+      'Recuerda: "iba, ibas, íbamos" del verbo IR se escriben SIEMPRE con B, mientras que "estuve, tuve, anduve" se escriben SIEMPRE con V.',
+    ],
+  },
+  {
+    id: 'notes-len-u6',
+    subject: 'lengua',
+    subjectName: 'Lengua Castellana y Literatura',
+    trimester: '3º Trimestre',
+    unitNumber: 'Unidad 6',
+    title: 'Los Géneros Literarios y las Figuras Retóricas (Recursos Literarios)',
+    quickSummary:
+      'Conocemos los 3 grandes géneros literarios (Narrativa, Lírica y Teatro), cómo medir versos y distinguir rima asonante y consonante, y los recursos literarios más preguntados en examen.',
+    detailedNotes: [
+      {
+        heading: '1. Los 3 Grandes Géneros Literarios',
+        points: [
+          '1. NARRATIVA: Un narrador cuenta una historia que les sucede a unos personajes en un tiempo y lugar (Marco). Partes: Planteamiento (inicio), Nudo (conflicto) y Desenlace (final). Ejemplos: el cuento, la novela, la leyenda y la fábula (con moraleja).',
+          '2. LÍRICA (Poesía): El autor expresa sentimientos y emociones, generalmente en VERSOS agrupados en ESTROFAS. Rima CONSONANTE (coinciden vocales y consonantes desde la última vocal tónica: can-CIÓN / cora-ZÓN) vs. Rima ASONANTE (solo coinciden las vocales: vE-rA-nO / mA-nO).',
+          '3. TEATRO (Dramática): Obras escritas en forma de diálogo para ser representadas por actores ante un público, con ACOTACIONES (indicaciones entre paréntesis sobre gestos, decorado o vestuario).',
+        ],
+      },
+      {
+        heading: '2. Los 4 Recursos Literarios Esenciales',
+        points: [
+          'COMPARACIÓN o SÍMIL: Compara dos elementos usando la palabra "COMO" ("Sus ojos brillan COMO dos estrellas").',
+          'METÁFORA: Identifica directamente una cosa real con otra imaginaria SIN usar "como" ("Las perlas de tu boca" = los dientes).',
+          'PERSONIFICACIÓN: Atribuye cualidades o acciones humanas a animales u objetos ("La luna nos sonreía desde el cielo").',
+          'HIPÉRBOLE: Exageración enorme ("Tengo tanta hambre que me comería un elefante").',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-len-6',
+        title: 'Diferencia entre Comparación (Símil) y Metáfora',
+        formulaExpression: 'Con la palabra "COMO" = Comparación   |   Directo SIN "como" = Metáfora',
+        explanation: 'Ambas relacionan dos cosas que se parecen, pero la comparación lleva el puente "como" o "parece".',
+        exampleCalculation: '"Tus dientes son como perlas" (Comparación) · "Las perlas de tu boca" (Metáfora)',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Identifica el tipo de rima y el recurso literario',
+        problemOrQuestion: 'En el verso "El viento cantaba una canción de cuna", ¿qué recurso literario hay?',
+        stepByStepSolution: [
+          '1º Nos fijamos en la acción "cantaba una canción de cuna" aplicada a "el viento".',
+          '2º Cantar una canción de cuna es una acción propia de las personas.',
+        ],
+        finalResult: 'Es una PERSONIFICACIÓN.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-len6-1',
+        question: '¿Qué tipo de rima hay entre las palabras "VENTANA" y "MAÑANA"?',
+        options: ['Rima CONSONANTE (coinciden vocales y consonantes a partir de la sílaba tónica: -ANA)', 'Rima asonante', 'Verso libre sin rima'],
+        correctAnswer: 'Rima CONSONANTE (coinciden vocales y consonantes a partir de la sílaba tónica: -ANA)',
+        explanation: 'Desde la A tónica de ven-TA-na y ma-ÑA-na coinciden todas las letras (-ana): es rima consonante.',
+      },
+    ],
+    examTips: [
+      'Al medir las sílabas de un verso en poesía, recuerda la SINALEFA: si una palabra acaba en vocal y la siguiente empieza por vocal o h, se unen en una sola sílaba.',
+    ],
+  },
+
+  // ============================================================================
+  // VALENCIÀ: LLENGUA I LITERATURA · 6 UNITATS COMPLETES DE 5é DE PRIMÀRIA
+  // ============================================================================
+  {
+    id: 'notes-val-u1',
+    subject: 'valencia',
+    subjectName: 'Valencià: Llengua i Literatura',
+    trimester: '1º Trimestre',
+    unitNumber: 'Unitat 1',
+    title: 'Síllaba Tònica i Accentuació: Accents Oberts (`) i Tancats (´)',
+    quickSummary:
+      'Aprenem quan s\'accentuen les paraules agudes, planes i esdrúixoles en valencià i el truc infal·lible per a saber si l\'accent gràfic va cap a l\'esquerra (obert o greu `) o cap a la dreta (tancat o agut ´).',
+    detailedNotes: [
+      {
+        heading: '1. Quan porten accent les paraules en valencià?',
+        points: [
+          'PARAULES AGUDES (força en l\'última síl·laba): Porten accent quan acaben en VOCAL, VOCAL + S, -EN, -IN (les 12 terminacions: a, e, i, o, u, as, es, is, os, us, en, in). Exemples: ca-mi-Ó, va-len-ci-À, ca-FÈ, com-PÀS, a-pren-EN.',
+          'PARAULES PLANES (força en la penúltima síl·laba): Porten accent quan NO acaben en cap de les 12 terminacions anteriors. Exemples: ÀR-bre, FÀ-cil, CÈN-tim, LÒ-gi-ca, exà-mens.',
+          'PARAULES ESDRÚIXOLES (força en l\'antepenúltima síl·laba): Porten accent SEMPRE! Exemples: MÚ-si-ca, PÀ-gi-na, ci-ÈN-ci-a, es-DRÚI-xo-la, va-len-ci-À.',
+        ],
+      },
+      {
+        heading: '2. El Secret de l\'Accent Obert (`) i l\'Accent Tancat (´)',
+        points: [
+          'La vocal A: SEMPRE porta accent OBERT cap a l\'esquerra (`à`), mai tancat! Exemples: català, demà, pàgina, fàbrica.',
+          'Les vocals I, U: SEMPRE porten accent TANCAT cap a la dreta (`í`, `ú`), mai obert! Exemples: camí, música, país, autobús.',
+          'Les vocals E, O: Poden ser obertes (`è`, `ò`, quan obrim més la boca: cafè, sèrie, ciència, paciència, però, arròs, història) o tancades (`é`, `ó`, com en més, tambor → cançó, lleó, església).',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-val-1',
+        title: 'Regla d\'Or de les Vocals en Valencià',
+        formulaExpression: 'A → sempre obert (À)   |   I, U → sempre tancat (Í, Ú)   |   E, O → obert (È, Ò) o tancat (É, Ó)',
+        explanation: 'Amb aquesta regla ja tens garantit no fallar mai l\'accent de la A, la I i la U!',
+        exampleCalculation: 'demà (à oberta) · camí (í tancada) · música (ú tancada) · arròs (ò oberta) · cançó (ó tancada)',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Exemple d\'Examen: Posa l\'accent correcte a "pagina", "cami", "arros" i "musica"',
+        problemOrQuestion: 'Classifica cada paraula i posa-li l\'accent obert o tancat.',
+        stepByStepSolution: [
+          '1º PÀ-gi-na → Esdrúixola amb vocal A → Sempre obert: pàgina.',
+          '2º ca-MÍ → Aguda acabada en vocal I → Sempre tancat: camí.',
+          '3º ar-RÒS → Aguda acabada en -os amb O oberta → arròs.',
+          '4º MÚ-si-ca → Esdrúixola amb vocal U → Sempre tancat: música.',
+        ],
+        finalResult: 'pàgina, camí, arròs i música.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-val1-1',
+        question: 'Quin accent porta SEMPRE la lletra A quan s\'accentua en valencià?',
+        options: ['Sempre porta accent obert o greu (à)', 'Sempre porta accent tancat (á)', 'Depén de si és aguda o plana'],
+        correctAnswer: 'Sempre porta accent obert o greu (à)',
+        explanation: 'En valencià la vocal A sempre porta accent obert (à), mentre que la I i la U sempre el porten tancat (í, ú).',
+      },
+    ],
+    examTips: [
+      'Fixa\'t en la diferència amb el castellà: les paraules acabades en -IA o -IO àtones en valencià són ESDRÚIXOLES i porten accent: "història, família, ciència, memòria, col·legi (no en porta perquè acaba en -i sola)".',
+    ],
+  },
+  {
+    id: 'notes-val-u2',
+    subject: 'valencia',
+    subjectName: 'Valencià: Llengua i Literatura',
+    trimester: '1º Trimestre',
+    unitNumber: 'Unitat 2',
+    title: 'L\'Apostrofació (l\', d\') i les Contraccions (al, del, pel)',
+    quickSummary:
+      'Aprenem quan s\'apostrofen els articles EL i LA i la preposició DE davant de vocal o H, l\'excepció de LA davant de i/u àtones, i com funcionen les contraccions.',
+    detailedNotes: [
+      {
+        heading: '1. Regla General de l\'Apòstrof (l\', d\')',
+        points: [
+          'L\'article masculí EL, el femení LA i la preposició DE perden la vocal i porten apòstrof (l\', d\') quan la paraula següent comença per VOCAL o H muda.',
+          'Exemples amb EL: el amic → l\'amic · el home → l\'home · el avi → l\'avi.',
+          'Exemples amb LA: la escola → l\'escola · la horta → l\'horta (com l\'Horta Nord de Museros) · la aigua → l\'aigua.',
+          'Exemples amb DE: de estiu → d\'estiu · de Museros (comença per consonant, NO s\'apostrofa) · de hivern → d\'hivern.',
+        ],
+      },
+      {
+        heading: '2. La Gran Excepció d\'Examen (Quan LA NO s\'apostrofa)',
+        points: [
+          'L\'article femení LA NO s\'apostrofa mai quan la paraula següent és femenina i comença per I, U, HI, HU ÀTONES (sense força de veu): LA universitat, LA història, LA indústria, LA idea, LA humitat.',
+          'Tampoc s\'apostrofa en "la una" (quan diem l\'hora: "Són la una i mitja"), ni "la ira", ni davant del nom de les lletres ("la ema, la essa").',
+          'En canvi, si la I o la U és TÒNICA (té el colp de veu), SÍ s\'apostrofa: l\'illa, l\'ungla, l\'única.',
+        ],
+      },
+      {
+        heading: '3. Les Contraccions (A + EL = AL · DE + EL = DEL · PER + EL = PEL)',
+        points: [
+          'Quan les preposicions A, DE, PER es troben amb els articles EL o ELS, s\'uneixen formant contraccions: al / als, del / dels, pel / pels.',
+          'ATENCIÓ: Si el nom que va darrere comença per vocal o h, NO fem la contracció perquè mana l\'apòstrof! Diem "Vaig a l\'escola" (no "al escola"), "Vinc de l\'hort" (no "del hort"), "Passege per l\'avinguda".',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-val-2',
+        title: 'Esquema d\'Apostrofació i Contracció',
+        formulaExpression: 'LA + (i, u, hi, hu ÀTONA) = LA sense apòstrof   |   A/DE/PER + l\' = NO hi ha contracció (a l\', de l\', per l\')',
+        explanation: 'L\'apòstrof sempre guanya a la contracció!',
+        exampleCalculation: 'l\'escola · la universitat · la història · l\'illa · Vaig al parc / Vaig a l\'institut',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Exemple d\'Examen: Posa EL, LA o L\' davant de "escola", "universitat", "horta" i "illa"',
+        problemOrQuestion: 'Escriu l\'article correcte davant de cada substantiu.',
+        stepByStepSolution: [
+          '1º escola (femení que comença per e-) → l\'escola.',
+          '2º universitat (femení que comença per u- àtona) → Excepció! → la universitat.',
+          '3º horta (femení que comença per ho- tònica) → l\'horta.',
+          '4º illa (femení que comença per i- tònica) → l\'illa.',
+        ],
+        finalResult: 'l\'escola, la universitat, l\'horta i l\'illa.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-val2-1',
+        question: 'Com s\'escriu correctament en valencià: "la universitat" o "l\'universitat"?',
+        options: ['la universitat (sense apòstrof perquè comença per u àtona)', 'l\'universitat', 'el universitat'],
+        correctAnswer: 'la universitat (sense apòstrof perquè comença per u àtona)',
+        explanation: 'Els noms femenins que comencen per i, u, hi, hu àtones (la universitat, la història, la idea) NO s\'apostrofen.',
+      },
+    ],
+    examTips: [
+      'Memoritza les 4 paraules estrela d\'examen que NO porten apòstrof: LA universitat, LA història, LA idea, LA una (hora).',
+    ],
+  },
+  {
+    id: 'notes-val-u3',
+    subject: 'valencia',
+    subjectName: 'Valencià: Llengua i Literatura',
+    trimester: '2º Trimestre',
+    unitNumber: 'Unitat 3',
+    title: 'Ortografia Valenciana: L·L (Ela Geminada), NY, B/V, S/SS/C/Ç i TG/TJ',
+    quickSummary:
+      'Repassem les grafies pròpies del valencià que no hem de confondre mai amb el castellà: la ela geminada (l·l), el dígraf ny, la ce trencada (ç) i l\'ús de b i v.',
+    detailedNotes: [
+      {
+        heading: '1. La Ela Geminada (L·L) vs. la LL',
+        points: [
+          'La ELA GEMINADA (l·l) s\'escriu amb un punt volat al mig (a l\'altura del centre de la lletra) i es pronuncia com dos eles separades.',
+          'Porten L·L les paraules que comencen per AL·L- (al·lèrgia), COL·L- (col·legi, col·laborar, col·lecció), IL·L- (il·lusió, il·luminar), MIL·L- (mil·límetre) i les que acaben en -EL·LA (novel·la, aquarel·la, caravel·la) o -IL·LA (goril·la, til·la, tranqui·la).',
+        ],
+      },
+      {
+        heading: '2. El Dígraf NY, la Ce Trencada (Ç) i TG / TJ',
+        points: [
+          'En valencià NO existeix la lletra "ñ": aquest so s\'escriu SEMPRE amb el dígraf NY (muntanya, aranya, bany, canya, Catalunya, Espanya).',
+          'La CE TRENCADA (Ç) s\'escriu davant de A, O, U i a final de paraula (plaça, cançó, dolç, feliç, lluç, braç). Davant de E, I escrivim sempre C normal (places, feliços → felices, cirera, cel).',
+          'Escrivim TG davant de E, I (formatge, viatge, platges, metge) i TJ davant de A, O, U (platja, mitja, llotja).',
+        ],
+      },
+      {
+        heading: '3. Diferències Clau de B i V entre Valencià i Castellà',
+        points: [
+          'En valencià s\'escriuen amb V els pretèrits imperfets de la 1a conjugació: cantava, jugàvem, parlaven (en castellà van amb -aba!).',
+          'Paraules que en valencià van amb V i en castellà amb B: advocat, automòbil (amb b), avet, núvol, saviesa, govern, haver, provar, treball (amb b), cavall.',
+          'Paraules que en valencià van amb B i en castellà amb V: mòbil, automòbil, oblidar, berruga, bafarada, calb, corb.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-val-3',
+        title: 'Regla dels Imperfets en -AVA i de TG / TJ',
+        formulaExpression: '1a Conjugació en passat = -AVA, -AVES, -ÀVEM (amb V!)   |   platJA (davant a,o,u) → platGES (davant e,i)',
+        explanation: 'Recorda sempre que en valencià "cantava i jugava" van amb V!',
+        exampleCalculation: 'col·legi · novel·la · muntanya · formatge · platja / platges · jo cantava',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Exemple d\'Examen: Passa al plural "la platja roja" i "el braç dolç"',
+        problemOrQuestion: 'Aplica els canvis ortogràfics de J/G i Ç/C en passar al plural.',
+        stepByStepSolution: [
+          '1º platja → davant de -es passa a TG: les platges; roja → davant de -es passa a G: roges.',
+          '2º braç → davant de -os manté la Ç: els braços; dolç → els dolços (en femení plural seria "dolces" amb C).',
+        ],
+        finalResult: 'les platges roges · els braços dolços.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-val3-1',
+        question: 'Com s\'escriu en valencià el passat del verb cantar: "jo cantaba" o "jo cantava"?',
+        options: ['Jo cantava (sempre amb V en tots els verbs de la 1a conjugació -ar)', 'Jo cantaba (amb B)', 'Jo cantave'],
+        correctAnswer: 'Jo cantava (sempre amb V en tots els verbs de la 1a conjugació -ar)',
+        explanation: 'Totes les terminacions del pretèrit imperfet dels verbs acabats en -AR s\'escriuen amb V en valencià: cantava, cantaves, cantàvem, cantàveu, cantaven.',
+      },
+    ],
+    examTips: [
+      'No escrigues mai Ç davant de E o I! És "la plaça", però en plural és "les places" (amb C).',
+    ],
+  },
+  {
+    id: 'notes-val-u4',
+    subject: 'valencia',
+    subjectName: 'Valencià: Llengua i Literatura',
+    trimester: '2º Trimestre',
+    unitNumber: 'Unitat 4',
+    title: 'Morfologia: Demostratius, Possessius, Numerals i Pronoms Febles',
+    quickSummary:
+      'Estudiem els determinants en valencià (aquest, eixe, aquell; el meu, la meua), com s\'escriuen els números amb la regla D-U-C (dezenes-unitats-centenes) i els pronoms febles bàsics.',
+    detailedNotes: [
+      {
+        heading: '1. Determinants Demostratius i Possessius en Valencià',
+        points: [
+          'DEMOSTRATIUS: Prop de qui parla: aquest, aquesta, aquests, aquestes (o este, esta, estos, estes). Prop de qui escolta: eixe, eixa, eixos, eixes. Lluny de tots dos: aquell, aquella, aquells, aquelles.',
+          'POSSESSIUS Tònics (amb article davant): el meu / la meua, el teu / la teua, el seu / la seua, el nostre / la nostra, el vostre / la vostra. Possessius Àtons (per a parentiu): mon pare, ma mare, ton germà, sa tia.',
+        ],
+      },
+      {
+        heading: '2. Els Numerals i la Regla D-U-C dels Guionets (-)',
+        points: [
+          'En valencià es posa GUIONET (-) entre les DEZENES i les UNITATS (D-U) i entre les UNITATS i les CENTENES (U-C). Això és la regla D-U-C!',
+          'Exemples de D-U (Dezena-Unitat): trenta-dos (32), quaranta-cinc (45), noranta-nou (99). Del 21 al 29 porta una -i- al mig amb dos guionets: vint-i-u (21), vint-i-quatre (24), vint-i-huit (28).',
+          'Exemples de U-C (Unitat-Centena): dos-cents (200), tres-centes (300), quatre-cents (400), huit-cents (800).',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-val-4',
+        title: 'Regla D-U-C per a escriure els números en valencià',
+        formulaExpression: 'D - U (Dezena - Unitat: trenta-tres)   |   U - C (Unitat - Centena: dos-cents)   |   21..29 = vint-i-...',
+        explanation: 'Només porten guionet les unions D-U i U-C!',
+        exampleCalculation: '245 = dos-cents quaranta-cinc   |   28 = vint-i-huit',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Exemple d\'Examen: Escriu amb lletres els nombres 26, 342 i 518 en valencià',
+        problemOrQuestion: 'Aplica la regla D-U-C dels guionets.',
+        stepByStepSolution: [
+          '1º 26 → Família del vint: vint-i-sis.',
+          '2º 342 → U-C (tres-cents) + D-U (quaranta-dos) → tres-cents quaranta-dos.',
+          '3º 518 → U-C (cinc-cents) + dèsset/dihuit → cinc-cents dihuit.',
+        ],
+        finalResult: 'vint-i-sis, tres-cents quaranta-dos i cinc-cents dihuit.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-val4-1',
+        question: 'Com s\'escriu correctament el número 24 en valencià?',
+        options: ['vint-i-quatre (amb dos guionets)', 'vintiquatre (tot junt)', 'vint i quatre (sense guionets)'],
+        correctAnswer: 'vint-i-quatre (amb dos guionets)',
+        explanation: 'Del 21 al 29 tots els nombres s\'escriuen amb "-i-" entre dos guionets: vint-i-u, vint-i-dos, vint-i-quatre...',
+      },
+    ],
+    examTips: [
+      'Memoritza la paraula "D-U-C" (Duc) per als números: Dezena-Unitat i Unitat-Centena porten guionet sempre!',
+    ],
+  },
+  {
+    id: 'notes-val-u5',
+    subject: 'valencia',
+    subjectName: 'Valencià: Llengua i Literatura',
+    trimester: '3º Trimestre',
+    unitNumber: 'Unitat 5',
+    title: 'Els Verbs en Valencià, Perífrasis d\'Obligació i Ser vs. Estar',
+    quickSummary:
+      'Aprenem el passat perifràstic (vaig cantar), com expressar obligació correctament (haver de + infinitiu, mai "tindre que") i les tres conjugacions.',
+    detailedNotes: [
+      {
+        heading: '1. El Passat Perifràstic (vaig + infinitiu)',
+        points: [
+          'En valencià parlat i escrit usem moltíssim el PASSAT PERIFRÀSTIC per a dir el que vam fer ahir o la setmana passada: es forma amb l\'auxiliar VAIG, VAS, VA, VAM, VAU, VAN + l\'infinitiu del verb.',
+          'ATENCIÓ: "Jo vaig jugar ahir" significa "Yo jugué ayer" (en passat!), NO significa "voy a jugar".',
+        ],
+      },
+      {
+        heading: '2. Perífrasi d\'Obligació: HAVER DE + Infinitiu / CALDRE',
+        points: [
+          'Per a dir que tenim l\'obligació de fer alguna cosa en valencià diem SEMPRE: "Haver de + infinitiu" ("He d\'estudiar per a l\'examen", "Has de recollir l\'habitació") o el verb "Caldre" ("Cal estudiar").',
+          'PROHIBIT EN EXAMEN: Mai no s\'ha de dir ni escriure *"Tinc que estudiar"* (és un barbarisme incorrecte).',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-val-5',
+        title: 'Fórmula d\'Obligació i Passat en Valencià',
+        formulaExpression: 'Passat = VAIG / VAS / VA / VAM / VAU / VAN + Infinitiu   |   Obligació = HE DE / HAS DE / HA DE / CAL + Infinitiu',
+        explanation: 'Recorda: "Tinc que..." és incorrecte; escriu sempre "He de..."!',
+        exampleCalculation: 'Ahir vam anar a Museros (Passat) · Hui he de fer els deures (Obligació)',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Exemple d\'Examen: Corregeix la frase incorrecta "Ahir teníem que fer el treball"',
+        problemOrQuestion: 'Substitueix el castellanisme per l\'estructura genuïna valenciana.',
+        stepByStepSolution: [
+          '1º Detectem "teníem que fer", que és incorrecte en valencià.',
+          '2º El canviem per "haver de + infinitiu" en passat: "Ahir havíem de fer el treball".',
+        ],
+        finalResult: '"Ahir havíem de fer el treball".',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-val5-1',
+        question: 'Què significa en valencià la frase "Ahir vam estudiar a la biblioteca"?',
+        options: ['Ayer estudiamos en la biblioteca (Passat perifràstic)', 'Mañana vamos a estudiar', 'Ahora estamos estudiando'],
+        correctAnswer: 'Ayer estudiamos en la biblioteca (Passat perifràstic)',
+        explanation: '"Vam estudiar" és el passat perifràstic de 1a persona del plural (Nosaltres vam estudiar = Nosotros estudiamos).',
+      },
+    ],
+    examTips: [
+      'No confongues mai "vaig cantar" (passat: canté) amb "vaig a cantar". Si ve acompanyat de "ahir" o "l\'any passat", sempre és passat perifràstic sense la preposició "a"!',
+    ],
+  },
+  {
+    id: 'notes-val-u6',
+    subject: 'valencia',
+    subjectName: 'Valencià: Llengua i Literatura',
+    trimester: '3º Trimestre',
+    unitNumber: 'Unitat 6',
+    title: 'Vocabulari de l\'Horta Nord i Museros, Els Dies i Cultura Valenciana',
+    quickSummary:
+      'Repassem el vocabulari essencial de l\'Horta, la fruita, la verdura, els dies de la setmana (sense article!), les estacions i els grans autors de la nostra literatura com Enric Valor i Joanot Martorell.',
+    detailedNotes: [
+      {
+        heading: '1. Vocabulari de l\'Horta de Museros, Alimentació i Dies de la Setmana',
+        points: [
+          'Vocabulari de l\'horta i la taula: la taronja (naranja), la bresquilla (melocotón), la maduixa o fraula (fresa), el creïlla o patata, la bajoca (judía verde), la carlota o safanòria (zanahoria), el dacsa o panís (maíz), l\'encisam (lechuga), la séquia (acequia), la barraca.',
+          'Els dies de la setmana: dilluns, dimarts, dimecres, dijous, divendres, dissabte, diumenge. (Quan parlem d\'un dia concret vam sense article o amb "el": "Dimecres tenim música").',
+          'Les 4 estacions: la primavera, l\'estiu, la tardor (otoño) i l\'hivern.',
+        ],
+      },
+      {
+        heading: '2. Literatura i Cultura Valenciana',
+        points: [
+          'ENRIC VALOR: Escriptor valencià que va recopilar i escriure les famoses "Rondalles Valencianes" (contes tradicionals populars com *El dimoni fumador* o *Els tres consells*).',
+          'JAUME I i el Llibre dels Fets: Crònica històrica de la fundació del Regne de València al segle XIII (9 d\'Octubre de 1238).',
+          'JOANOT MARTORELL: Autor de *Tirant lo Blanc* al segle XV (Segle d\'Or de les lletres valencianes).',
+          'VICENT BLASCO IBÁÑEZ: Escriptor valencià universal que dóna nom al nostre col·legi de Museros, autor de novel·les sobre l\'horta i l\'Albufera com *La barraca* i *Cañas y barro*.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-val-6',
+        title: 'Vocabulari Clau que Sempre Ix a l\'Examen',
+        formulaExpression: 'tardor = otoño · bresquilla = melocotón · carlota = zanahoria · creïlla = patata · bajoca = judía verde',
+        explanation: 'Fixa\'t que "creïlla" porta dièresi (¨) sobre la i!',
+        exampleCalculation: 'A la tardor collim taronges a l\'horta de Museros.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Exemple d\'Examen: Tradueix al valencià "En otoño comemos melocotón y zanahoria"',
+        problemOrQuestion: 'Escriu la frase emprant el vocabulari genuí valencià.',
+        stepByStepSolution: [
+          '1º "En otoño" → A la tardor.',
+          '2º "comemos" → mengem.',
+          '3º "melocotón y zanahoria" → bresquilla i carlota (o safanòria).',
+        ],
+        finalResult: '"A la tardor mengem bresquilla i carlota".',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-val6-1',
+        question: 'Quin escriptor valencià va recollir les tradicionals "Rondalles Valencianes"?',
+        options: ['Enric Valor', 'Miguel de Cervantes', 'Joaquín Sorolla'],
+        correctAnswer: 'Enric Valor',
+        explanation: 'Enric Valor és l\'autor de les cèlebres Rondalles Valencianes i un gran defensor de la nostra llengua.',
+      },
+    ],
+    examTips: [
+      'Recorda que el nostre col·legi s\'anomena CEIP Blasco Ibáñez en honor a l\'escriptor valencià Vicent Blasco Ibáñez, que va retratar la vida de l\'horta valenciana i l\'Albufera!',
+    ],
+  },
+
+  // ============================================================================
+  // EDUCACIÓN ARTÍSTICA (MÚSICA Y PLÁSTICA) · 4 UNIDADES COMPLETAS
+  // ============================================================================
+  {
+    id: 'notes-art-u1',
+    subject: 'artistica',
+    subjectName: 'Educación Artística: Música y Plástica',
+    trimester: '1º Trimestre',
+    unitNumber: 'Unidad 1',
+    title: 'Lenguaje Musical: El Pentagrama, las Notas y el Valor de las Figuras',
+    quickSummary:
+      'Dominamos el pentagrama (5 líneas y 4 espacios), la clave de Sol y las equivalencias matemáticas de las figuras musicales (redonda, blanca, negra, corchea y semicorchea).',
+    detailedNotes: [
+      {
+        heading: '1. El Pentagrama, la Clave de Sol y las 7 Notas Musicales',
+        points: [
+          'El PENTAGRAMA ("penta" = 5, "grama" = línea) tiene 5 líneas y 4 espacios que se cuentan siempre de ABAJO ARRIBA.',
+          'La CLAVE DE SOL se dibuja empezando en la 2ª línea del pentagrama. Eso significa que cualquier nota colocada en la 2ª línea se llama SOL.',
+          'Notas en las 5 líneas (de abajo arriba): MI (1ª) - SOL (2ª) - SI (3ª) - RE (4ª) - FA (5ª). Notas en los 4 espacios: FA (1º) - LA (2º) - DO (3º) - MI (4º).',
+        ],
+      },
+      {
+        heading: '2. Duración de las Figuras Musicales y sus Silencios',
+        points: [
+          'REDONDA: Dura 4 pulsos (tiempos). Su silencio cuelga debajo de la 4ª línea.',
+          'BLANCA: Dura 2 pulsos (la mitad de una redonda). Su silencio se apoya encima de la 3ª línea (como un sombrero).',
+          'NEGRA: Dura 1 pulso. Es la unidad de tiempo básica.',
+          'CORCHEA: Dura medio pulso (0,5 tiempos). Dos corcheas unidas (ti-ti) duran 1 pulso igual que 1 negra.',
+          'SEMICORCHEA: Dura un cuarto de pulso (0,25 tiempos). Cuatro semicorcheas juntas duran 1 pulso.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-art-1',
+        title: 'Tabla de Equivalencias Rítmicas Musicales',
+        formulaExpression: '1 Redonda (4) = 2 Blancas (2+2) = 4 Negras (1+1+1+1) = 8 Corcheas = 16 Semicorcheas',
+        explanation: 'El PUNTILLO colocado a la derecha de una figura le suma la MITAD de su valor (ej. Blanca con puntillo = 2 + 1 = 3 tiempos).',
+        exampleCalculation: 'Blanca (2) + Negra (1) + 2 Corcheas (0,5 + 0,5) = 4 tiempos en total',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Suma los tiempos de un compás con 1 Blanca, 1 Negra y 2 Corcheas',
+        problemOrQuestion: 'Calcula cuántos tiempos suma el grupo rítmico y a qué compás pertenece.',
+        stepByStepSolution: [
+          '1º Blanca = 2 tiempos.',
+          '2º Negra = 1 tiempo.',
+          '3º Dos corcheas = 0,5 + 0,5 = 1 tiempo.',
+          '4º Suma total: 2 + 1 + 1 = 4 tiempos.',
+        ],
+        finalResult: 'Suma 4 tiempos (Compás cuaternario de 4/4).',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-art1-1',
+        question: '¿Cuántos tiempos dura una BLANCA CON PUNTILLO?',
+        options: ['3 tiempos (2 de la blanca + 1 del puntillo)', '2 tiempos y medio', '4 tiempos'],
+        correctAnswer: '3 tiempos (2 de la blanca + 1 del puntillo)',
+        explanation: 'El puntillo añade siempre la mitad del valor de la figura que acompaña: la mitad de 2 es 1 → 2 + 1 = 3 tiempos.',
+      },
+    ],
+    examTips: [
+      'Truco del sombrero para los silencios: el silencio de BLANCA parece un sombrero bien puesto (encima de la 3ª línea) y el de REDONDA un sombrero boca abajo (debajo de la 4ª línea).',
+    ],
+  },
+  {
+    id: 'notes-art-u2',
+    subject: 'artistica',
+    subjectName: 'Educación Artística: Música y Plástica',
+    trimester: '2º Trimestre',
+    unitNumber: 'Unidad 2',
+    title: 'Compases, Cualidades del Sonido y Familias de Instrumentos',
+    quickSummary:
+      'Entendemos los compases de 2/4, 3/4 y 4/4, las 4 cualidades del sonido (Altura, Duración, Intensidad y Timbre) y las 3 familias de instrumentos musicales (Cuerda, Viento y Percusión) con especial atención a las bandas valencianas.',
+    detailedNotes: [
+      {
+        heading: '1. Las 4 Cualidades del Sonido',
+        points: [
+          '1. ALTURA (Tono): Distingue sonidos AGUDOS o GRAVES. Se representa con las notas en el pentagrama.',
+          '2. DURACIÓN: Distingue sonidos LARGOS o CORTOS. Se representa con las figuras musicales (redonda, blanca, negra...).',
+          '3. INTENSIDAD (Volumen): Distingue sonidos FUERTES (f = forte) o SUAVES (p = piano).',
+          '4. TIMBRE: Es la "voz" propia que nos permite distinguir qué instrumento o persona está sonando aunque toquen la misma nota.',
+        ],
+      },
+      {
+        heading: '2. Las 3 Familias de Instrumentos y la Música en la Comunitat Valenciana',
+        points: [
+          'CUERDA: Frotada (violín, viola, violonchelo, contrabajo), Pulsada (guitarra, arpa) y Percutida (piano).',
+          'VIENTO: Viento-Madera (flauta travesera, clarinete, oboe, fagot, saxofón y nuestra tradicional DOLÇAINA) y Viento-Metal (trompeta, trombón, trompa, tuba).',
+          'PERCUSIÓN: De altura determinada (xilófono, metalófono, timbales) e indeterminada (tambor, bombo, platillos, triángulo y el TABALET valenciano).',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-art-2',
+        title: 'Significado de los Compases 2/4, 3/4 y 4/4',
+        formulaExpression: '2/4 (Binario) = 2 negras por compás  |  3/4 (Ternario) = 3 negras por compás  |  4/4 (Cuaternario) = 4 negras por compás',
+        explanation: 'Las líneas verticales que separan un compás de otro en el pentagrama se llaman LÍNEAS DIVISORIAS.',
+        exampleCalculation: 'En un compás de 3/4 caben exactamente 3 negras, o 1 blanca + 1 negra, o 6 corcheas.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Clasifica el Clarinete, el Violonchelo y el Piano',
+        problemOrQuestion: 'Indica a qué familia y subfamilia pertenece cada instrumento.',
+        stepByStepSolution: [
+          '1º Clarinete → Tiene lengüeta de caña → Viento-Madera.',
+          '2º Violonchelo → Se toca con arco → Cuerda Frotada.',
+          '3º Piano → Al pulsar las teclas unos macillos golpean cuerdas interiores → Cuerda Percutida.',
+        ],
+        finalResult: 'Clarinete (Viento-Madera), Violonchelo (Cuerda Frotada) y Piano (Cuerda Percutida).',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-art2-1',
+        question: '¿A qué familia pertenece el SAXOFÓN aunque su cuerpo esté hecho de metal dorado?',
+        options: ['A Viento-Madera (porque su boquilla funciona con una caña o lengüeta de madera como el clarinete)', 'A Cuerda pulsada', 'A Percusión'],
+        correctAnswer: 'A Viento-Madera (porque su boquilla funciona con una caña o lengüeta de madera como el clarinete)',
+        explanation: '¡Pregunta clásica de examen! Tanto la flauta travesera como el saxofón pertenecen a Viento-Madera.',
+      },
+    ],
+    examTips: [
+      'En la Comunitat Valenciana tenemos una enorme tradición de Sociedades Musicales (bandas de música) y la pareja tradicional de instrumentos populares es "la dolçaina i el tabalet".',
+    ],
+  },
+  {
+    id: 'notes-art-u3',
+    subject: 'artistica',
+    subjectName: 'Educación Artística: Música y Plástica',
+    trimester: '3º Trimestre',
+    unitNumber: 'Unidad 3',
+    title: 'Plástica y Visual: Teoría del Color, Simetría y Joaquín Sorolla',
+    quickSummary:
+      'Estudiamos los colores primarios y cómo mezclarlos para obtener los secundarios, la diferencia entre gama cálida y gama fría, la simetría axial y la pintura luminista de Joaquín Sorolla.',
+    detailedNotes: [
+      {
+        heading: '1. Colores Primarios, Secundarios y Complementarios',
+        points: [
+          'COLORES PRIMARIOS (no se pueden obtener mezclando otros): Magenta (Rojo), Cian (Azul) y Amarillo.',
+          'COLORES SECUNDARIOS (mezcla de dos primarios a partes iguales): Amarillo + Cian = VERDE · Amarillo + Magenta = NARANJA · Magenta + Cian = VIOLETA (Morado).',
+          'Gama CÁLIDA (transmiten calor, luz y energía): amarillos, naranjas y rojos. Gama FRÍA (transmiten calma, agua y frescor): azules, verdes y violetas.',
+        ],
+      },
+      {
+        heading: '2. Grandes Artistas Valencianos: Joaquín Sorolla ("El Pintor de la Luz")',
+        points: [
+          'JOAQUÍN SOROLLA (nacido en Valencia en 1863): Es el pintor más famoso de la luz del Mediterráneo. Pintaba al aire libre en las playas de Valencia (como la Malvarrosa y el Cabanyal) con pinceladas rápidas llenas de blancos luminosos, azules y violetas.',
+          'Obras famosas: *Paseo a orillas del mar*, *Niños en la playa* y *La vuelta de la pesca*.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-art-3',
+        title: 'Fórmulas de Mezcla de Colores',
+        formulaExpression: 'Amarillo + Azul (Cian) = VERDE   |   Amarillo + Rojo (Magenta) = NARANJA   |   Rojo + Azul = VIOLETA',
+        explanation: 'Si añadimos BLANCO a un color aumentamos su luminosidad (tono pastel); si añadimos NEGRO lo oscurecemos.',
+        exampleCalculation: 'Los colores cálidos avanzan hacia el espectador; los colores fríos dan sensación de lejanía.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: ¿Cómo pintarías un atardecer cálido y el mar en calma?',
+        problemOrQuestion: 'Elige la gama cromática adecuada para cada zona del cuadro.',
+        stepByStepSolution: [
+          '1º Para el sol y el atardecer usamos la gama CÁLIDA (amarillo, naranja, rojo).',
+          '2º Para el agua profunda del mar usamos la gama FRÍA (azul cian, verde esmeralda, violeta).',
+        ],
+        finalResult: 'Gama cálida para el cielo al atardecer y gama fría para el mar.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-art3-1',
+        question: '¿Qué color secundario obtenemos al mezclar AMARILLO y AZUL CIAN?',
+        options: ['Verde', 'Naranja', 'Violeta'],
+        correctAnswer: 'Verde',
+        explanation: 'Amarillo + Azul = Verde · Amarillo + Rojo = Naranja · Rojo + Azul = Violeta.',
+      },
+    ],
+    examTips: [
+      'Recuerda qué es la SIMETRÍA AXIAL: cuando una línea recta central (Eje de Simetría) divide una figura en dos mitades exactamente iguales como si se miraran en un espejo.',
+    ],
+  },
+  {
+    id: 'notes-art-u4',
+    subject: 'artistica',
+    subjectName: 'Educación Artística: Música y Plástica',
+    trimester: '3º Trimestre',
+    unitNumber: 'Unidad 4',
+    title: 'Volumen, Perspectiva, Cómic y Lenguaje Audiovisual',
+    quickSummary:
+      'Aprendemos cómo crear sensación de profundidad (perspectiva y superposición), la diferencia entre formas planas (2D) y esculturas con volumen (3D) y los elementos del cómic (viñetas, bocadillos y onomatopeyas).',
+    detailedNotes: [
+      {
+        heading: '1. Cómo representar la Profundidad y el Volumen',
+        points: [
+          'Para que un dibujo plano parezca tener profundidad (3D) usamos tres trucos: 1º TAMAÑO (lo cercano se dibuja grande y lo lejano pequeño), 2º SUPERPOSICIÓN (lo que está delante tapa parcialmente a lo que está detrás) y 3º CLAROSCURO (luces y sombras).',
+        ],
+      },
+      {
+        heading: '2. El Lenguaje del Cómic',
+        points: [
+          'VIÑETA: Cada uno de los recuadros que componen la historieta (se leen de izquierda a derecha y de arriba abajo).',
+          'BOCADILLO o GLOBO: Espacio donde se escribe lo que dicen o piensan los personajes. El rabillo o delta apunta a quien habla (si tiene burbujitas como una nube, significa que el personaje está pensando).',
+          'ONOMATOPEYA: Palabra que imita un sonido real (¡BUM!, ¡CRASH!, ¡ZAS!, ¡RING!).',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-art-4',
+        title: 'Tipos de Bocadillos en el Cómic',
+        formulaExpression: 'Línea normal = Habla  |  Nube con burbujas = Piensa  |  Puntas de estrella = Grita  |  Línea discontinua = Susurra',
+        explanation: 'La forma del contorno del bocadillo expresa el volumen y la intención de la voz del personaje.',
+        exampleCalculation: 'Un bocadillo con picos y letras grandes "¡SOCORRO!" indica un grito.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Diseña una viñeta donde un personaje piensa en silencio',
+        problemOrQuestion: '¿Qué tipo de bocadillo debes dibujar?',
+        stepByStepSolution: [
+          '1º Dibujamos el contorno en forma de nube redondeada.',
+          '2º En lugar de un rabillo en punta hacia la boca, dibujamos pequeños circulitos (burbujas) hacia la cabeza.',
+        ],
+        finalResult: 'Bocadillo de pensamiento en forma de nube con burbujas.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-art4-1',
+        question: '¿Cómo se llaman en un cómic palabras como "¡CRASH!", "¡SPLASH!" o "¡TOC, TOC!" que imitan ruidos?',
+        options: ['Onomatopeyas', 'Acotaciones', 'Metáforas'],
+        correctAnswer: 'Onomatopeyas',
+        explanation: 'Las onomatopeyas son palabras que imitan visual y fonéticamente los sonidos de la realidad.',
+      },
+    ],
+    examTips: [
+      'Recuerda: una pintura o dibujo tiene 2 dimensiones (alto y ancho), mientras que una escultura o edificio tiene 3 dimensiones (alto, ancho y profundidad/volumen).',
+    ],
+  },
+
+  // ============================================================================
+  // EDUCACIÓN FÍSICA Y SALUD · 2 UNIDADES COMPLETAS (INCLUYE PILOTA VALENCIANA)
+  // ============================================================================
+  {
+    id: 'notes-ef-u1',
+    subject: 'educacion-fisica',
+    subjectName: 'Educación Física y Salud',
+    trimester: '1º Trimestre',
+    unitNumber: 'Unidad 1',
+    title: 'El Calentamiento, las 4 Capacidades Físicas Básicas y Hábitos Saludables',
+    quickSummary:
+      'Aprendemos por qué es obligatorio calentar antes de hacer deporte, cómo medir las pulsaciones (frecuencia cardíaca), las 4 capacidades físicas básicas (F-R-V-F) y la higiene postural.',
+    detailedNotes: [
+      {
+        heading: '1. El Calentamiento y sus 3 Fases Ordenadas',
+        points: [
+          'El CALENTAMIENTO es el conjunto de ejercicios suaves y progresivos que hacemos antes de practicar deporte para preparar músculos, articulaciones y corazón, evitando lesiones y mejorando el rendimiento.',
+          'Fase 1 · Movilidad Articular: Giros suaves de tobillos, rodillas, cadera, hombros y cuello.',
+          'Fase 2 · Activación Cardiovascular (Carrera suave): Trote continuo, desplazamientos laterales, talones al glúteo y rodillas arriba para subir pulsaciones.',
+          'Fase 3 · Estiramientos dinámicos y juegos de activación.',
+        ],
+      },
+      {
+        heading: '2. Las 4 Capacidades Físicas Básicas (F-R-V-F)',
+        points: [
+          '1. FUERZA: Capacidad de vencer u oponerse a un peso o resistencia mediante la tensión muscular (ej. empujar, saltar, transportar).',
+          '2. RESISTENCIA: Capacidad de mantener un esfuerzo físico durante mucho tiempo sin agotarse (ej. correr 15 minutos seguidos o ir en bici).',
+          '3. VELOCIDAD: Capacidad de realizar un movimiento o recorrer una distancia en el menor tiempo posible (ej. un sprint de 30 metros).',
+          '4. FLEXIBILIDAD: Capacidad de estirar los músculos y lograr el máximo recorrido de las articulaciones sin hacerse daño.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-ef-1',
+        title: 'Cómo medir la Frecuencia Cardíaca (Pulsaciones por minuto)',
+        formulaExpression: 'Pulsaciones en 6 segundos × 10 = Pulsaciones por minuto (ppm)   |   O bien: Pulsaciones en 15 segundos × 4',
+        explanation: 'En reposo un niño de 5º de Primaria suele tener entre 70 y 90 ppm; al correr sube a 140–180 ppm.',
+        exampleCalculation: 'Si cuentas 15 latidos en 6 segundos después de correr: 15 × 10 = 150 ppm.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Regla del peso máximo de la mochila escolar',
+        problemOrQuestion: 'Para cuidar la columna vertebral, el peso de la mochila nunca debe superar el 10% del peso corporal. Si un alumno pesa 40 kg, ¿cuánto debe pesar como máximo su mochila?',
+        stepByStepSolution: [
+          '1º Calculamos el 10% de 40 kg dividiendo entre 10: 40 ÷ 10 = 4 kg.',
+          '2º Además, debe llevarse siempre colgada de los DOS hombros y bien pegada a la espalda.',
+        ],
+        finalResult: 'Máximo 4 kg de peso y colgada de ambos hombros.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-ef1-1',
+        question: '¿Qué capacidad física básica estamos trabajando principalmente cuando corremos a ritmo suave durante 12 minutos sin parar?',
+        options: ['La Resistencia', 'La Velocidad de reacción', 'La Flexibilidad estática'],
+        correctAnswer: 'La Resistencia',
+        explanation: 'Mantener un esfuerzo prolongado en el tiempo trabajando el corazón y los pulmones desarrolla la Resistencia.',
+      },
+    ],
+    examTips: [
+      'Al terminar la clase de Educación Física hacemos siempre la VUELTA A LA CALMA (estiramientos suaves y respiración) para que las pulsaciones bajen poco a poco.',
+    ],
+  },
+  {
+    id: 'notes-ef-u2',
+    subject: 'educacion-fisica',
+    subjectName: 'Educación Física y Salud',
+    trimester: '2º Trimestre',
+    unitNumber: 'Unidad 2',
+    title: 'L\'Esport Autòcton: La Pilota Valenciana i els Esports Col·lectius',
+    quickSummary:
+      'Conocemos el deporte tradicional propio de la Comunitat Valenciana (la Pilota Valenciana), sus modalidades (Raspall, Escala i Corda, Galotxa), cómo se puntúa (15, 30, Val y Joc) y el reglamento de los deportes de equipo.',
+    detailedNotes: [
+      {
+        heading: '1. La Pilota Valenciana: Puntuación y Vocabulario Tradicional',
+        points: [
+          'En la Pilota Valenciana se golpea la pelota con la mano (protegida con esparadrapo y dedales o *tesamoll*). El recinto cerrado tradicional donde se juega se llama TRINQUET (que tiene escaleras laterales donde se sienta el público y una cuerda en el centro).',
+          '¿Cómo se cuentan los puntos en un juego? Se cuenta de cuatro en cuatro tantos: 1º punto = QUINZE (15) · 2º punto = TRENTA (30) · 3º punto = VAL · 4º punto = JOC (Juego ganado). Si empatan a 30 o a Val, se dice "A DOS".',
+        ],
+      },
+      {
+        heading: '2. Las Grandes Modalidades: Raspall vs. Escala i Corda',
+        points: [
+          'RASPALL: Se llama así porque el jugador tiene que "raspar" el suelo con los dedos para levantar la pelota. La pelota PUEDE dar varios botes y rodar por el suelo sin perder el punto.',
+          'ESCALA I CORDA: Hay una cuerda alta en mitad del trinquet. La pelota tiene que pasar SIEMPRE por encima de la cuerda (sin tocarla ni pasar por debajo) y solo puede dar como máximo UN bote en el suelo (si bota en las escaleras laterales del trinquet, no cuenta como bote de suelo).',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-ef-2',
+        title: 'Marcador Oficial de la Pilota Valenciana',
+        formulaExpression: '1r punt: QUINZE (15)  →  2n punt: TRENTA (30)  →  3r punt: VAL  →  4t punt: JOC!',
+        explanation: 'Antes de sacar, el jugador avisa al equipo contrario gritando "¿Va de bo!" (¡Va de verdad!).',
+        exampleCalculation: 'En Raspall la pelota puede rodar por el suelo; en Escala i Corda pasa por encima de la cuerda con máximo 1 bote.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: Un equipo lleva 30 puntos y gana un tanto más. ¿Cómo va el marcador?',
+        problemOrQuestion: 'Indica cómo se canta ese tercer punto en Pilota Valenciana.',
+        stepByStepSolution: [
+          '1º El primer tanto es 15 (Quinze) y el segundo es 30 (Trenta).',
+          '2º El tercer tanto antes de cerrar el Joc se llama VAL.',
+        ],
+        finalResult: 'El equipo pasa a tener "VAL" (a un solo punto de ganar el Joc).',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-ef2-1',
+        question: '¿En qué modalidad de Pilota Valenciana está permitido que la pelota dé varios botes y ruede por el suelo?',
+        options: ['En el Raspall', 'En Escala i Corda', 'En ninguna modalidad'],
+        correctAnswer: 'En el Raspall',
+        explanation: 'En el Raspall la pelota puede botar más de una vez y rodar por el suelo, raspando el pavimento con la mano.',
+      },
+    ],
+    examTips: [
+      'Recuerda también la Conducta PAS en primeros auxilios deportivos: 1º PROTEGER el lugar, 2º AVISAR al profesor o al 112 y 3º SOCORRER al compañero.',
+    ],
+  },
+
+  // ============================================================================
+  // VALORES CÍVICOS Y ÉTICOS · 2 UNIDADES COMPLETAS DE 5º DE PRIMARIA
+  // ============================================================================
+  {
+    id: 'notes-valciv-u1',
+    subject: 'valores',
+    subjectName: 'Valores Cívicos y Éticos',
+    trimester: '1º Trimestre',
+    unitNumber: 'Unidad 1',
+    title: 'Inteligencia Emocional, Empatía, Convivencia y Mediación Escolar',
+    quickSummary:
+      'Aprendemos a identificar y regular nuestras emociones, a practicar la empatía y la comunicación asertiva (ni agresiva ni pasiva) y a resolver conflictos en el colegio mediante la mediación.',
+    detailedNotes: [
+      {
+        heading: '1. Empatía y los 3 Estilos de Comunicación',
+        points: [
+          'La EMPATÍA es la capacidad de ponernos en el lugar de otra persona para comprender cómo se siente y por qué actúa así, aunque pensemos diferente.',
+          'Estilo PASIVO: Callarse lo que uno siente por miedo y dejar que otros decidan siempre.',
+          'Estilo AGRESIVO: Imponer nuestra opinión gritando, insultando o faltando al respeto.',
+          'Estilo ASERTIVO (El ideal): Expresar lo que sentimos y necesitamos con calma, educación y respeto hacia los demás ("Entiendo tu idea, pero a mí me gustaría que turnáramos el balón").',
+        ],
+      },
+      {
+        heading: '2. Prevención del Acoso Escolar (No seas espectador pasivo)',
+        points: [
+          'Ante cualquier situación de burla, exclusión o acoso escolar (bullying o ciberbullying), nunca debemos reír la gracia ni quedarnos callados: debemos apoyar al compañero y avisar inmediatamente a los profesores o a nuestra familia.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-valciv-1',
+        title: 'Fórmula de la Comunicación Asertiva y Mediación',
+        formulaExpression: '1º Escucha activa sin interrumpir  →  2º "Yo me siento... cuando..."  →  3º Buscar un acuerdo justo para todos',
+        explanation: 'Un MEDIADOR escolar no es un juez que castiga, sino un compañero neutral que ayuda a que las dos partes se escuchen y lleguen a un acuerdo.',
+        exampleCalculation: 'Comportamiento Asertivo = Respeto mis propios derechos + Respeto los derechos de mis compañeros.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo Práctico: Dos grupos quieren usar la misma pista del patio a la vez',
+        problemOrQuestion: '¿Cuál es la solución cívica y asertiva?',
+        stepByStepSolution: [
+          '1º Evitamos discutir o quitar la pista por la fuerza (estilo agresivo).',
+          '2º Dialogamos y proponemos compartir la pista jugando juntos o dividir el tiempo del recreo en dos mitades iguales de 15 minutos.',
+        ],
+        finalResult: 'Acuerdo cooperativo por turnos o juego compartido.',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-vc1-1',
+        question: '¿Cómo se llama la forma de comunicarse en la que defendemos nuestros derechos con educación y calma, sin gritar ni quedarnos callados?',
+        options: ['Comunicación Asertiva', 'Comunicación Agresiva', 'Comunicación Pasiva'],
+        correctAnswer: 'Comunicación Asertiva',
+        explanation: 'La asertividad es el punto de equilibrio sano entre la pasividad y la agresividad.',
+      },
+    ],
+    examTips: [
+      'Recuerda siempre la diferencia entre simpatía (caer bien) y EMPATÍA (ponerse en la piel del otro y comprender sus sentimientos).',
+    ],
+  },
+  {
+    id: 'notes-valciv-u2',
+    subject: 'valores',
+    subjectName: 'Valores Cívicos y Éticos',
+    trimester: '2º Trimestre',
+    unitNumber: 'Unidad 2',
+    title: 'Derechos de la Infancia, Sostenibilidad (3R y ODS) y Ciudadanía Digital',
+    quickSummary:
+      'Conocemos los Derechos Fundamentales de la Infancia (ONU), los 17 Objetivos de Desarrollo Sostenible (Agenda 2030), el reciclaje correcto y las reglas de oro de la seguridad en Internet.',
+    detailedNotes: [
+      {
+        heading: '1. Sostenibilidad Ambiental y Separación de Residuos',
+        points: [
+          'Regla de las 3R en orden de prioridad: 1º REDUCIR (consumir solo lo necesario y evitar plásticos de un solo uso), 2º REUTILIZAR (usar cantimplora recargable, aprovechar hojas por las dos caras) y 3º RECICLAR.',
+          'Colores de los contenedores: AMARILLO (envases de plástico, latas y briks), AZUL (papel y cartón), VERDE IGLÚ (vidrio: botellas y tarros, ¡nunca vasos rotos ni espejos!) y MARRÓN (materia orgánica para compost).',
+        ],
+      },
+      {
+        heading: '2. Seguridad Digital y Netiqueta',
+        points: [
+          'PRIVACIDAD: Nunca compartas en redes o juegos online tus datos personales (nombre completo, dirección en Museros, teléfono, contraseñas o colegio) con desconocidos.',
+          'NETIQUETA: Trata a los demás en Internet con el mismo respeto y educación con que los tratas cara a cara en clase.',
+        ],
+      },
+    ],
+    importantFormulas: [
+      {
+        id: 'f-valciv-2',
+        title: 'Guía Rápida de Contenedores de Reciclaje',
+        formulaExpression: 'Amarillo = Plástico, Latas y Briks  |  Azul = Papel y Cartón  |  Verde = Botellas de Vidrio  |  Marrón = Orgánico',
+        explanation: 'Un brik de leche o zumo SIEMPRE va al contenedor AMARILLO (porque tiene capas de plástico y aluminio), nunca al azul.',
+        exampleCalculation: 'Botella de agua → Amarillo · Caja de cereales de cartón → Azul · Piel de plátano → Marrón.',
+      },
+    ],
+    workedExamples: [
+      {
+        title: 'Ejemplo de Examen: ¿En qué contenedor va un brik de zumo vacío y una lata de atún?',
+        problemOrQuestion: 'Indica el contenedor correcto para ambos residuos.',
+        stepByStepSolution: [
+          '1º Aunque el brik parezca cartón por fuera, es un envase mixto con plástico y aluminio.',
+          '2º Tanto los briks como las latas metálicas y botellas de plástico van al contenedor AMARILLO.',
+        ],
+        finalResult: 'Ambos van al contenedor AMARILLO (envases).',
+      },
+    ],
+    quickQuiz: [
+      {
+        id: 'qq-vc2-1',
+        question: '¿A qué contenedor debemos tirar un BRIK de leche o de zumo?',
+        options: ['Al contenedor AMARILLO (envases de plástico, latas y briks)', 'Al contenedor azul de papel', 'Al contenedor verde de vidrio'],
+        correctAnswer: 'Al contenedor AMARILLO (envases de plástico, latas y briks)',
+        explanation: 'Los briks contienen plástico y aluminio además de cartón, por lo que son envases ligeros y van al contenedor amarillo.',
+      },
+    ],
+    examTips: [
+      'En las 3R, recuerda siempre cuál es la primera y más importante: REDUCIR (porque el mejor residuo es el que no llega a fabricarse).',
+    ],
+  },
 ];
 
 export const INTERACTIVE_GLOSSARY_TERMS: GlossaryTerm[] = [
@@ -2075,5 +3349,121 @@ export const INTERACTIVE_GLOSSARY_TERMS: GlossaryTerm[] = [
     memoryTrickOrFormula:
       '476 (Caída de Roma) → 711 (Al-Ándalus) → 1238 (Jaume I en Valencia) → 1492 (Fin de la Edad Media).',
     visualIconType: 'sci-society-population',
+  },
+
+  // ==========================================
+  // GLOSARIO DE LENGUA CASTELLANA, VALENCIÀ, MÚSICA, E. FÍSICA Y VALORES
+  // ==========================================
+  {
+    id: 'glos-len-acentuacion',
+    term: 'Palabras Agudas, Llanas y Esdrújulas (Regla N-S-Vocal)',
+    subject: 'lengua',
+    subjectLabel: 'Lengua Castellana',
+    subCategory: 'Ortografía, Sintaxis y Literatura',
+    clearDefinition:
+      'Clasificación de las palabras según la posición de su sílaba tónica (la que suena más fuerte): AGUDA (última sílaba), LLANA (penúltima sílaba) y ESDRÚJULA (antepenúltima sílaba).',
+    example:
+      'Aguda con tilde: "ca-mión" (acaba en -n). Llana con tilde: "ár-bol" (acaba en -l). Esdrújula: "mú-si-ca" (siempre lleva tilde).',
+    memoryTrickOrFormula:
+      'Agudas llevan tilde si acaban en N, S o Vocal · Llanas llevan tilde si NO acaban en N, S o Vocal · Esdrújulas SIEMPRE.',
+    visualIconType: 'math-problem-steps',
+  },
+  {
+    id: 'glos-len-diptongo-hiato',
+    term: 'Diptongo e Hiato (Vocales Fuertes A-E-O y Débiles I-U)',
+    subject: 'lengua',
+    subjectLabel: 'Lengua Castellana',
+    subCategory: 'Ortografía, Sintaxis y Literatura',
+    clearDefinition:
+      'Un DIPTONGO es la unión de dos vocales en la misma sílaba (ej. cie-lo, ciu-dad). Un HIATO es la separación de dos vocales seguidas en sílabas distintas porque las dos son fuertes (te-a-tro) o porque la débil lleva tilde (Ma-rí-a, ba-úl).',
+    example:
+      '"Ciu-dad" y "rei-na" tienen diptongo (no se separan). "Po-e-ta" y "bú-ho" tienen hiato (sí se separan).',
+    memoryTrickOrFormula:
+      'Vocales Fuertes = A, E, O · Vocales Débiles = I, U. Si la débil suena fuerte, lleva tilde siempre (í, ú) y rompe el diptongo.',
+    visualIconType: 'eng-comparative',
+  },
+  {
+    id: 'glos-len-sujeto-predicado',
+    term: 'Sujeto y Predicado (Análisis Sintáctico)',
+    subject: 'lengua',
+    subjectLabel: 'Lengua Castellana',
+    subCategory: 'Ortografía, Sintaxis y Literatura',
+    clearDefinition:
+      'Las dos partes fundamentales de toda oración. El SUJETO es la persona, animal o cosa que realiza la acción del verbo (su núcleo es un sustantivo o pronombre), y el PREDICADO es lo que hace o se dice del sujeto (su núcleo es siempre el verbo).',
+    example:
+      'En "[Los niños de 5º] [juegan en el patio]": Sujeto = "Los niños de 5º" (Núcleo: niños) · Predicado = "juegan en el patio" (Núcleo: juegan).',
+    memoryTrickOrFormula:
+      '1º Busca el Verbo → 2º Pregunta ¿Quién/Quiénes + verbo? = Sujeto → 3º Todo lo demás (incluido el verbo) = Predicado.',
+    visualIconType: 'lengua-sintaxis',
+  },
+  {
+    id: 'glos-val-apostrof',
+    term: 'L\'Apostrofació (l\', d\') i les Contraccions (al, del, pel)',
+    subject: 'valencia',
+    subjectLabel: 'Valencià: Llengua i Literatura',
+    subCategory: 'Valencià i Cultura',
+    clearDefinition:
+      'En valencià, els articles EL i LA i la preposició DE s\'apostrofen (l\', d\') davant de paraula que comence per vocal o h muda, excepte LA davant de paraula femenina que comence per i/u àtones (la universitat, la història).',
+    example:
+      'l\'escola, l\'horta de Museros, l\'amic, d\'estiu; però sense apòstrof: la universitat, la història, la idea, la una.',
+    memoryTrickOrFormula:
+      'LA + i/u àtona = LA (sense apòstrof)  |  A/DE/PER + l\' = a l\', de l\', per l\' (l\'apòstrof guanya a la contracció).',
+    visualIconType: 'valencia-apostrof',
+  },
+  {
+    id: 'glos-val-ela-geminada',
+    term: 'Ela Geminada (L·L), Dígraf NY i Accents Oberts (`) / Tancats (´)',
+    subject: 'valencia',
+    subjectLabel: 'Valencià: Llengua i Literatura',
+    subCategory: 'Valencià i Cultura',
+    clearDefinition:
+      'Grafies característiques del valencià: la L·L (amb punt volat al mig) sona com dos eles (col·legi, novel·la); el dígraf NY equival al so de la ñ castellana (muntanya); i l\'accent obert (`) s\'usa sempre en la À i en È/Ò obertes.',
+    example:
+      'El nostre col·legi està prop de la muntanya i de la platja. Demà tindrem classe de música i valencià.',
+    memoryTrickOrFormula:
+      'La A sempre porta accent obert (À)  |  La I i la U sempre porten accent tancat (Í, Ú).',
+    visualIconType: 'valencia-apostrof',
+  },
+  {
+    id: 'glos-art-figuras-color',
+    term: 'Figuras Musicales (Redonda, Blanca, Negra, Corchea) y Teoría del Color',
+    subject: 'artistica',
+    subjectLabel: 'Educación Artística',
+    subCategory: 'Música, Arte, Deporte y Valores',
+    clearDefinition:
+      'En Música, las figuras indican la duración del sonido: Redonda (4 tiempos), Blanca (2), Negra (1) y Corchea (1/2). En Plástica, los colores primarios son Amarillo, Magenta (Rojo) y Cian (Azul), y su mezcla crea los secundarios (Verde, Naranja y Violeta).',
+    example:
+      'En un compás de 4/4 caben 1 blanca (2) + 1 negra (1) + 2 corcheas (0,5+0,5) = 4 tiempos.',
+    memoryTrickOrFormula:
+      'Redonda = 4 · Blanca = 2 · Negra = 1 · Corchea = 0,5  |  Amarillo + Azul = Verde · Amarillo + Rojo = Naranja.',
+    visualIconType: 'musica-figuras',
+  },
+  {
+    id: 'glos-ef-pilota-capacidades',
+    term: 'Capacidades Físicas Básicas y Pilota Valenciana (Trinquet i Raspall)',
+    subject: 'educacion-fisica',
+    subjectLabel: 'Educación Física y Salud',
+    subCategory: 'Música, Arte, Deporte y Valores',
+    clearDefinition:
+      'Las 4 Capacidades Físicas Básicas son Fuerza, Resistencia, Velocidad y Flexibilidad. Nuestro deporte autóctono es la Pilota Valenciana, que se juega en el trinquet o en la calle en modalidades como el Raspall y Escala i Corda.',
+    example:
+      'En la Pilota Valenciana los puntos de un juego se cuentan: Quinze (15), Trenta (30), Val y Joc.',
+    memoryTrickOrFormula:
+      '4 Capacidades: F-R-V-F (Fuerza, Resistencia, Velocidad, Flexibilidad)  |  Tanteo Pilota: 15 → 30 → Val → Joc.',
+    visualIconType: 'ef-pilota',
+  },
+  {
+    id: 'glos-valciv-empatia-3r',
+    term: 'Empatía, Comunicación Asertiva y Regla de las 3R',
+    subject: 'valores',
+    subjectLabel: 'Valores Cívicos y Éticos',
+    subCategory: 'Música, Arte, Deporte y Valores',
+    clearDefinition:
+      'La EMPATÍA es ponerse en el lugar del otro para comprender cómo se siente. La ASERTIVIDAD es expresar nuestras ideas con respeto y calma. Las 3R de la ecología son Reducir, Reutilizar y Reciclar.',
+    example:
+      'Reciclaje: los briks de leche, latas y botellas de plástico van al contenedor AMARILLO; el papel y cartón al AZUL; el vidrio al VERDE.',
+    memoryTrickOrFormula:
+      'Orden de las 3R: 1º Reducir → 2º Reutilizar → 3º Reciclar  |  Briks + Latas + Plástico = Contenedor Amarillo.',
+    visualIconType: 'valores-convivencia',
   },
 ];

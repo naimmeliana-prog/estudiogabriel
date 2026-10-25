@@ -18,7 +18,16 @@ import { SubjectStudyBook } from './SubjectStudyBook';
 interface InteractiveGlossaryModuleProps {
   glossaryTerms: GlossaryTerm[];
   completedIds: string[];
-  initialSubjectFilter?: 'all' | 'ingles' | 'matematicas' | 'conocimiento';
+  initialSubjectFilter?:
+    | 'all'
+    | 'ingles'
+    | 'matematicas'
+    | 'conocimiento'
+    | 'lengua'
+    | 'valencia'
+    | 'artistica'
+    | 'educacion-fisica'
+    | 'valores';
   onAddGlossaryTerm: (newTerm: Omit<GlossaryTerm, 'id' | 'visualIconType'>) => void;
   onCompleteActivity: (id: string, xp: number) => void;
 }
@@ -161,6 +170,67 @@ export const GlossaryVisualIllustration: React.FC<{
         </svg>
       );
 
+    case 'lengua-sintaxis':
+      return (
+        <svg viewBox="0 0 160 100" className="w-full h-28 bg-[#F8FAFC] rounded-lg border border-slate-200 p-2">
+          <rect x="10" y="24" width="64" height="48" rx="6" fill="#0284C7" />
+          <text x="42" y="45" textAnchor="middle" className="text-[10px] font-bold fill-white">SUJETO (SN)</text>
+          <text x="42" y="59" textAnchor="middle" className="text-[8px] fill-sky-100">¿Quién realiza?</text>
+          <rect x="82" y="24" width="68" height="48" rx="6" fill="#059669" />
+          <text x="116" y="45" textAnchor="middle" className="text-[10px] font-bold fill-white">PREDICADO (SV)</text>
+          <text x="116" y="59" textAnchor="middle" className="text-[8px] fill-emerald-100">Verbo = Núcleo</text>
+        </svg>
+      );
+
+    case 'valencia-apostrof':
+      return (
+        <svg viewBox="0 0 160 100" className="w-full h-28 bg-[#F8FAFC] rounded-lg border border-slate-200 p-2">
+          <rect x="14" y="20" width="62" height="58" rx="8" fill="#059669" />
+          <text x="45" y="45" textAnchor="middle" className="text-[11px] font-bold fill-white">l'escola</text>
+          <text x="45" y="62" textAnchor="middle" className="text-[9px] fill-emerald-100">l'horta · d'or</text>
+          <rect x="84" y="20" width="62" height="58" rx="8" fill="#D97706" />
+          <text x="115" y="45" textAnchor="middle" className="text-[11px] font-bold fill-white">la universitat</text>
+          <text x="115" y="62" textAnchor="middle" className="text-[8px] fill-amber-100">-i/-u àtona NO</text>
+        </svg>
+      );
+
+    case 'musica-figuras':
+      return (
+        <svg viewBox="0 0 160 100" className="w-full h-28 bg-[#F8FAFC] rounded-lg border border-slate-200 p-2">
+          {[28, 40, 52, 64, 76].map((y) => (
+            <line key={y} x1="12" y1={y} x2="148" y2={y} stroke="#CBD5E1" strokeWidth="1.5" />
+          ))}
+          <circle cx="42" cy="64" r="6" fill="#0284C7" />
+          <line x1="48" y1="64" x2="48" y2="32" stroke="#0284C7" strokeWidth="2.5" />
+          <circle cx="82" cy="52" r="6" fill="white" stroke="#059669" strokeWidth="2.5" />
+          <line x1="88" y1="52" x2="88" y2="22" stroke="#059669" strokeWidth="2.5" />
+          <text x="122" y="54" textAnchor="middle" className="text-[12px] font-bold fill-[#0F172A]">4/4</text>
+        </svg>
+      );
+
+    case 'ef-pilota':
+      return (
+        <svg viewBox="0 0 160 100" className="w-full h-28 bg-[#F8FAFC] rounded-lg border border-slate-200 p-2">
+          <rect x="12" y="18" width="136" height="64" rx="8" fill="#E0F2FE" stroke="#0284C7" strokeWidth="2" />
+          <circle cx="44" cy="50" r="14" fill="#DC2626" />
+          <text x="44" y="54" textAnchor="middle" className="text-[9px] font-bold fill-white">ROJOS</text>
+          <text x="84" y="45" textAnchor="middle" className="text-[10px] font-bold fill-[#0F172A]">15 · 30 · VAL</text>
+          <text x="84" y="62" textAnchor="middle" className="text-[9px] font-bold fill-[#059669]">JOC!</text>
+          <circle cx="124" cy="50" r="14" fill="#0284C7" />
+          <text x="124" y="54" textAnchor="middle" className="text-[9px] font-bold fill-white">BLAUS</text>
+        </svg>
+      );
+
+    case 'valores-convivencia':
+      return (
+        <svg viewBox="0 0 160 100" className="w-full h-28 bg-[#F8FAFC] rounded-lg border border-slate-200 p-2">
+          <circle cx="52" cy="50" r="24" fill="#0284C7" fillOpacity="0.85" />
+          <circle cx="80" cy="50" r="24" fill="#059669" fillOpacity="0.85" />
+          <circle cx="108" cy="50" r="24" fill="#D97706" fillOpacity="0.85" />
+          <text x="80" y="54" textAnchor="middle" className="text-[10px] font-bold fill-white">EMPATÍA · 3R</text>
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 160 100" className="w-full h-28 bg-[#F8FAFC] rounded-lg border border-slate-200 p-2">
@@ -186,7 +256,15 @@ export const InteractiveGlossaryModule: React.FC<
     'glossary'
   );
   const [subjectFilter, setSubjectFilter] = useState<
-    'all' | 'ingles' | 'matematicas' | 'conocimiento'
+    | 'all'
+    | 'ingles'
+    | 'matematicas'
+    | 'conocimiento'
+    | 'lengua'
+    | 'valencia'
+    | 'artistica'
+    | 'educacion-fisica'
+    | 'valores'
   >(initialSubjectFilter);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTermId, setSelectedTermId] = useState<string>(
@@ -203,7 +281,14 @@ export const InteractiveGlossaryModule: React.FC<
   // Add Term form state
   const [newTermName, setNewTermName] = useState<string>('');
   const [newTermSubject, setNewTermSubject] = useState<
-    'ingles' | 'matematicas' | 'conocimiento'
+    | 'ingles'
+    | 'matematicas'
+    | 'conocimiento'
+    | 'lengua'
+    | 'valencia'
+    | 'artistica'
+    | 'educacion-fisica'
+    | 'valores'
   >('matematicas');
   const [newTermSubCat, setNewTermSubCat] =
     useState<GlossaryTerm['subCategory']>('Operaciones y Cálculo');
@@ -242,10 +327,15 @@ export const InteractiveGlossaryModule: React.FC<
     e.preventDefault();
     if (!newTermName.trim() || !newTermDef.trim()) return;
 
-    const labels = {
+    const labels: Record<GlossaryTerm['subject'], string> = {
       ingles: 'Inglés',
       matematicas: 'Matemáticas',
       conocimiento: 'Conocimiento del Medio',
+      lengua: 'Lengua Castellana y Literatura',
+      valencia: 'Valencià: Llengua i Literatura',
+      artistica: 'Educación Artística (Música y Plástica)',
+      'educacion-fisica': 'Educación Física y Salud',
+      valores: 'Valores Cívicos y Éticos',
     };
 
     onAddGlossaryTerm({
@@ -386,7 +476,7 @@ export const InteractiveGlossaryModule: React.FC<
                 value={newTermSubject}
                 onChange={(e) =>
                   setNewTermSubject(
-                    e.target.value as 'ingles' | 'matematicas' | 'conocimiento'
+                    e.target.value as GlossaryTerm['subject']
                   )
                 }
                 className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm bg-white"
@@ -394,6 +484,11 @@ export const InteractiveGlossaryModule: React.FC<
                 <option value="matematicas">Matemáticas</option>
                 <option value="ingles">Inglés</option>
                 <option value="conocimiento">Conocimiento del Medio</option>
+                <option value="lengua">Lengua Castellana y Literatura</option>
+                <option value="valencia">Valencià: Llengua i Literatura</option>
+                <option value="artistica">Educación Artística (Música y Plástica)</option>
+                <option value="educacion-fisica">Educación Física y Salud</option>
+                <option value="valores">Valores Cívicos y Éticos</option>
               </select>
             </div>
             <div>
@@ -414,6 +509,21 @@ export const InteractiveGlossaryModule: React.FC<
                 <option value="Naturaleza y Seres Vivos">Naturaleza y Seres Vivos</option>
                 <option value="Sociedad, Geografía e Historia">
                   Sociedad, Geografía e Historia
+                </option>
+                <option value="Gramática, Ortografía y Literatura">
+                  Gramática, Ortografía y Literatura (Lengua)
+                </option>
+                <option value="Ortografia, Gramàtica i Vocabulari">
+                  Ortografia, Gramàtica i Vocabulari (Valencià)
+                </option>
+                <option value="Lenguaje Musical y Plástica">
+                  Lenguaje Musical y Plástica
+                </option>
+                <option value="Deporte, Pilota Valenciana y Salud">
+                  Deporte, Pilota Valenciana y Salud
+                </option>
+                <option value="Convivencia, Empatía y Ciudadanía">
+                  Convivencia, Empatía y Ciudadanía
                 </option>
               </select>
             </div>
@@ -478,10 +588,15 @@ export const InteractiveGlossaryModule: React.FC<
           <div className="bg-white border border-[#E2E8F0] rounded-xl p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-1.5">
               {[
-                { id: 'all', label: 'Todas las Asignaturas' },
-                { id: 'matematicas', label: 'Matemáticas (Multiplicación, Problema...)' },
-                { id: 'ingles', label: 'Inglés (Vocabulario y Gramática)' },
-                { id: 'conocimiento', label: 'Conocimiento (Naturaleza y Sociedad)' },
+                { id: 'all', label: 'Todas' },
+                { id: 'matematicas', label: 'Matemáticas' },
+                { id: 'ingles', label: 'Inglés' },
+                { id: 'conocimiento', label: 'Conocimiento' },
+                { id: 'lengua', label: 'Lengua Castellana' },
+                { id: 'valencia', label: 'Valencià' },
+                { id: 'artistica', label: 'Música y Plástica' },
+                { id: 'educacion-fisica', label: 'E. Física' },
+                { id: 'valores', label: 'Valores' },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -632,18 +747,20 @@ export const InteractiveGlossaryModule: React.FC<
               Elige la asignatura para ver su Temario Completo, Resúmenes y Fórmulas:
             </span>
             {[
-              { id: 'matematicas', label: 'Matemáticas (Unidades 1–6 + Fórmulas)' },
-              { id: 'ingles', label: 'Inglés (Units 1–6 + Reglas Gramaticales)' },
-              {
-                id: 'conocimiento',
-                label: 'Conocimiento del Medio (Naturaleza, Cuerpo y Sociedad)',
-              },
+              { id: 'matematicas', label: 'Matemáticas (8 Unidades)' },
+              { id: 'ingles', label: 'Inglés (8 Units)' },
+              { id: 'conocimiento', label: 'Conocimiento del Medio (8 Unidades)' },
+              { id: 'lengua', label: 'Lengua Castellana (6 Unidades)' },
+              { id: 'valencia', label: 'Valencià (6 Unitats)' },
+              { id: 'artistica', label: 'Música y Plástica (4 Unidades)' },
+              { id: 'educacion-fisica', label: 'Educación Física y Salud' },
+              { id: 'valores', label: 'Valores Cívicos y Éticos' },
             ].map((s) => (
               <button
                 key={s.id}
                 type="button"
                 onClick={() => setSubjectFilter(s.id as any)}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap shrink-0 ${
+                className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap shrink-0 ${
                   (subjectFilter === 'all' ? 'matematicas' : subjectFilter) === s.id
                     ? 'bg-[#0284C7] text-white'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'

@@ -21,7 +21,15 @@ interface SubjectStudyBookProps {
   completedIds?: string[];
   onMarkUnitStudied: (unitId: string, xp: number) => void;
   onOpenGlossaryForSubject?: (
-    subject: 'ingles' | 'matematicas' | 'conocimiento'
+    subject:
+      | 'ingles'
+      | 'matematicas'
+      | 'conocimiento'
+      | 'lengua'
+      | 'valencia'
+      | 'artistica'
+      | 'educacion-fisica'
+      | 'valores'
   ) => void;
 }
 
@@ -95,19 +103,16 @@ export const SubjectStudyBook: React.FC<SubjectStudyBookProps> = ({
           <span className="text-xs font-mono font-semibold text-[#059669] bg-[#059669]/10 px-3 py-1.5 rounded-lg tabular-nums">
             ● {studiedCount} / {subjectUnits.length} unidades estudiadas
           </span>
-          {onOpenGlossaryForSubject &&
-            (subject === 'ingles' ||
-              subject === 'matematicas' ||
-              subject === 'conocimiento') && (
-              <button
-                type="button"
-                onClick={() => onOpenGlossaryForSubject(subject)}
-                className="px-3.5 py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>Glosario de {currentUnit.subjectName}</span>
-              </button>
-            )}
+          {onOpenGlossaryForSubject && subject !== 'otras' && (
+            <button
+              type="button"
+              onClick={() => onOpenGlossaryForSubject(subject)}
+              className="px-3.5 py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Glosario de {currentUnit.subjectName}</span>
+            </button>
+          )}
         </div>
       </div>
 

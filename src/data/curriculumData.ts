@@ -1,4 +1,13 @@
-export type SubjectId = 'ingles' | 'matematicas' | 'conocimiento' | 'lengua' | 'valencia' | 'otras';
+export type SubjectId =
+  | 'ingles'
+  | 'matematicas'
+  | 'conocimiento'
+  | 'lengua'
+  | 'valencia'
+  | 'artistica'
+  | 'educacion-fisica'
+  | 'valores'
+  | 'otras';
 
 export type GradeId =
   | '5-primaria'
@@ -1291,6 +1300,105 @@ export const INITIAL_ADAPTIVE_FLASHCARDS: AdaptiveFlashcard[] = [
     box: 1,
     timesCorrect: 0,
   },
+  // LENGUA CASTELLANA Y LITERATURA (5º PRIMARIA)
+  {
+    id: 'fc-len-1',
+    gradeId: '5-primaria',
+    subject: 'lengua',
+    subjectLabel: 'Lengua Castellana',
+    topic: 'Acentuación: Agudas, Llanas y Esdrújulas',
+    frontQuestion: '¿Cuándo llevan tilde las palabras AGUDAS y cuándo las palabras LLANAS?',
+    backAnswer: 'Las AGUDAS llevan tilde cuando terminan en N, S o Vocal (ej. camión, compás, sofá). Las LLANAS llevan tilde cuando NO terminan ni en N, ni en S, ni en Vocal (ej. árbol, lápiz, césped). Las ESDRÚJULAS llevan tilde siempre.',
+    mnemonicHint: 'Truco N-S-V: Agudas SÍ llevan tilde en N-S-Vocal; Llanas son lo contrario.',
+    box: 1,
+    timesCorrect: 0,
+  },
+  {
+    id: 'fc-len-2',
+    gradeId: '5-primaria',
+    subject: 'lengua',
+    subjectLabel: 'Lengua Castellana',
+    topic: 'Diptongos e Hiatos',
+    frontQuestion: '¿Por qué "María" y "baúl" llevan tilde aunque "baúl" termine en L y "María" en vocal?',
+    backAnswer: 'Porque tienen un HIATO de vocal débil tónica (í, ú) junto a vocal fuerte (a, e, o). La tilde en la í o ú rompe el diptongo y siempre se escribe.',
+    mnemonicHint: 'Vocales fuertes (abiertas): A, E, O · Vocales débiles (cerradas): I, U.',
+    box: 1,
+    timesCorrect: 0,
+  },
+  {
+    id: 'fc-len-3',
+    gradeId: '5-primaria',
+    subject: 'lengua',
+    subjectLabel: 'Lengua Castellana',
+    topic: 'Sintaxis: Sujeto y Predicado',
+    frontQuestion: '¿Cómo se localiza el SUJETO de una oración sin equivocarse nunca?',
+    backAnswer: 'Preguntando "¿Quién?" o "¿Quiénes?" al verbo y comprobando la concordancia: si cambias el verbo a plural, la palabra que también cambia a plural por obligación es el Sujeto.',
+    mnemonicHint: 'El núcleo del Sujeto es un sustantivo o pronombre; el núcleo del Predicado es el verbo.',
+    box: 1,
+    timesCorrect: 0,
+  },
+  // VALENCIÀ: LLENGUA I LITERATURA (5º PRIMARIA)
+  {
+    id: 'fc-val-1',
+    gradeId: '5-primaria',
+    subject: 'valencia',
+    subjectLabel: 'Valencià: Llengua i Literatura',
+    topic: 'L\'Apostrofació i Contraccions',
+    frontQuestion: 'Quan s\'apostrofa l\'article femení "LA" en valencià i quina és la gran excepció?',
+    backAnswer: 'S\'apostrofa (l\') davant de vocal o h muda (ex. l\'escola, l\'horta), EXCEPTE davant de "i" o "u" àtones (sense força de veu), com en "la universitat", "la història" o "la idea".',
+    mnemonicHint: 'Recorda: l\'escola i l\'illa (i tònica), però LA universitat i LA història (i/u àtones).',
+    box: 1,
+    timesCorrect: 0,
+  },
+  {
+    id: 'fc-val-2',
+    gradeId: '5-primaria',
+    subject: 'valencia',
+    subjectLabel: 'Valencià: Llengua i Literatura',
+    topic: 'Accents Oberts i Tancats i Ela Geminada',
+    frontQuestion: 'Quina vocal porta SEMPRE l\'accent obert (à) en valencià i com s\'escriu "colegio"?',
+    backAnswer: 'La lletra A sempre porta accent greu o obert (`à`), com en "català" o "Valencià". I "colegio" s\'escriu amb ela geminada: "col·legi" (amb punt volat al mig: l·l).',
+    mnemonicHint: 'La A mai pot portar accent tancat: sempre és À (cap a l\'esquerra).',
+    box: 1,
+    timesCorrect: 0,
+  },
+  // EDUCACIÓN ARTÍSTICA, EDUCACIÓN FÍSICA Y VALORES CÍVICOS
+  {
+    id: 'fc-art-1',
+    gradeId: '5-primaria',
+    subject: 'artistica',
+    subjectLabel: 'Educación Artística (Música y Plástica)',
+    topic: 'Lenguaje Musical: Figuras y Duración',
+    frontQuestion: '¿Cuántos pulsos (tiempos de negra) duran la Redonda, la Blanca, la Negra y la Corchea?',
+    backAnswer: 'Redonda = 4 tiempos · Blanca = 2 tiempos · Negra = 1 tiempo · Corchea = medio tiempo (1/2 tiempo; 2 corcheas valen 1 negra).',
+    mnemonicHint: 'Cada figura dura exactamente la mitad que la anterior: 4 → 2 → 1 → 1/2.',
+    box: 1,
+    timesCorrect: 0,
+  },
+  {
+    id: 'fc-ef-1',
+    gradeId: '5-primaria',
+    subject: 'educacion-fisica',
+    subjectLabel: 'Educación Física y Salud',
+    topic: 'Capacidades Físicas y Pilota Valenciana',
+    frontQuestion: '¿Cuáles son las 4 Capacidades Físicas Básicas y cuáles son las dos grandes modalidades de Pilota Valenciana?',
+    backAnswer: 'Las 4 capacidades son Fuerza, Resistencia, Velocidad y Flexibilidad. En Pilota Valenciana destacan el Raspall (la pelota puede rodar por el suelo) y Escala i Corda (por encima de una cuerda central sin tocar el suelo más de un bote).',
+    mnemonicHint: 'Sigla F-R-V-F: Fuerza, Resistencia, Velocidad y Flexibilidad.',
+    box: 1,
+    timesCorrect: 0,
+  },
+  {
+    id: 'fc-val-civ-1',
+    gradeId: '5-primaria',
+    subject: 'valores',
+    subjectLabel: 'Valores Cívicos y Éticos',
+    topic: 'Convivencia, Empatía y Regla de las 3R',
+    frontQuestion: '¿Qué es la Empatía en la convivencia escolar y qué significan las 3R de la sostenibilidad?',
+    backAnswer: 'La Empatía es ponerse en el lugar de otra persona para comprender cómo se siente. Las 3R son: 1º Reducir (gastar menos), 2º Reutilizar (dar un segundo uso) y 3º Reciclar (separar en contenedores).',
+    mnemonicHint: 'En las 3R el orden importa: la mejor basura es la que NO se produce (Reducir).',
+    box: 1,
+    timesCorrect: 0,
+  },
 ];
 
 export const ALL_GRADES_CATALOG: GradeLevelInfo[] = [
@@ -1356,17 +1464,70 @@ export const ALL_GRADES_CATALOG: GradeLevelInfo[] = [
         id: '5p-len',
         name: 'Lengua Castellana y Literatura',
         category: 'lengua',
-        topicsCount: 9,
-        keyTopics: ['Reglas de acentuación (agudas, llanas, esdrújulas y diptongos/hiatos)', 'Sustantivos, adjetivos, determinantes, pronombres y verbos', 'Sujeto y Predicado, comprensión lectora y géneros literarios'],
-        annualUpdateNote: 'Actualizado con talleres de expresión escrita y ortografía visual.',
+        topicsCount: 6,
+        keyTopics: [
+          'Unidad 1: Reglas de Acentuación (Agudas, Llanas, Esdrújulas y Sobresdrújulas)',
+          'Unidad 2: Diptongos, Triptongos e Hiatos y Reglas de la Tilde',
+          'Unidad 3: Morfología I · Sustantivos, Adjetivos, Determinantes y Pronombres',
+          'Unidad 4: Morfología II · El Verbo (Conjugaciones y Tiempos) y Palabras Invariables',
+          'Unidad 5: Sintaxis (Sujeto y Predicado) y Ortografía de B/V, G/J y H',
+          'Unidad 6: Los Géneros Literarios (Narrativa, Lírica, Teatro) y Recursos Literarios',
+        ],
+        annualUpdateNote: 'Actualizado con talleres interactivos de acentuación, análisis sintáctico y ortografía visual.',
       },
       {
         id: '5p-val',
         name: 'Valencià: Llengua i Literatura',
         category: 'valencia',
-        topicsCount: 9,
-        keyTopics: ['Vocabulari de l\'Horta, la natura i la ciutat', 'L\'apostrofació, la contracció i els accents oberts i tancats', 'Comprensió oral i expressió en valencià'],
+        topicsCount: 6,
+        keyTopics: [
+          'Unitat 1: Sistema Vocàlic i Accentuació (Accents oberts à/è/ò i tancats é/í/ó/ú)',
+          'Unitat 2: L\'Apostrofació (l\', d\') i les Contraccions (al, del, pel, cal)',
+          'Unitat 3: Ortografia Valenciana (b/v, s/ss/c/ç/z, g/j/tg/tj, ny i ela geminada l·l)',
+          'Unitat 4: Determinants, Quantitatius i Pronoms Febles Bàsics',
+          'Unitat 5: Els Verbs en Valencià (Ser vs Estar, Perífrasis i Conjugacions)',
+          'Unitat 6: Vocabulari de l\'Horta Nord i Museros i Literatura Valenciana (Enric Valor, Jaume I)',
+        ],
         annualUpdateNote: 'Adaptado al proyecto lingüístico de centro del CEIP Blasco Ibáñez de Museros.',
+      },
+      {
+        id: '5p-art',
+        name: 'Educación Artística: Música y Plástica',
+        category: 'artistica',
+        topicsCount: 4,
+        keyTopics: [
+          'Unidad 1: Lenguaje Musical (Pentagrama, Clave de Sol, Notas y Figuras: Redonda, Blanca, Negra, Corchea)',
+          'Unidad 2: Compases (2/4, 3/4, 4/4), Cualidades del Sonido y Familias de Instrumentos',
+          'Unidad 3: Teoría del Color (Primarios, Secundarios, Cálidos y Fríos) y la Luz de Sorolla',
+          'Unidad 4: Proporción, Simetría, Perspectiva, Volumen y Patrimonio Artístico Valenciano',
+        ],
+        annualUpdateNote: 'Incluye calculadora rítmica musical y laboratorio visual de teoría del color.',
+      },
+      {
+        id: '5p-ef',
+        name: 'Educación Física y Salud',
+        category: 'educacion-fisica',
+        topicsCount: 4,
+        keyTopics: [
+          'Unidad 1: El Calentamiento, Frecuencia Cardíaca y Capacidades Físicas Básicas (F-R-V-F)',
+          'Unidad 2: Habilidades Motrices Básicas, Coordinación Dinámica y Equilibrio',
+          'Unidad 3: Esport Autòcton · La Pilota Valenciana (Trinquet, Raspall y Escala i Corda)',
+          'Unidad 4: Hábitos Saludables, Higiene Postural, Hidratación y Primeros Auxilios (PAS)',
+        ],
+        annualUpdateNote: 'Incluye unidad específica de Pilota Valenciana en la escuela (Programa Pilota a l\'Escola GVA).',
+      },
+      {
+        id: '5p-val-civ',
+        name: 'Valores Cívicos y Éticos y Competencia Digital',
+        category: 'valores',
+        topicsCount: 4,
+        keyTopics: [
+          'Unidad 1: Autoconocimiento, Gestión de Emociones, Empatía y Autoestima',
+          'Unidad 2: Convivencia Escolar, Mediación Pacífica de Conflictos y Trabajo en Equipo',
+          'Unidad 3: Derechos de la Infancia, Igualdad, Democracia y Constitución / Estatut',
+          'Unidad 4: Sostenibilidad Ambiental (Regla de las 3R, ODS) y Seguridad Digital',
+        ],
+        annualUpdateNote: 'Competencia ciudadana, ecosocial y bienestar digital en Primaria.',
       },
     ],
   },

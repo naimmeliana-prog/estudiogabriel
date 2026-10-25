@@ -79,6 +79,9 @@ export const FlashcardsModule: React.FC<FlashcardsModuleProps> = ({
       conocimiento: 'Conocimiento del Medio',
       lengua: 'Lengua Castellana',
       valencia: 'Valencià',
+      artistica: 'Educación Artística (Música y Plástica)',
+      'educacion-fisica': 'Educación Física y Salud',
+      valores: 'Valores Cívicos y Éticos',
       otras: 'Otras Materias',
     };
 
@@ -157,8 +160,11 @@ export const FlashcardsModule: React.FC<FlashcardsModuleProps> = ({
                 <option value="ingles">Inglés</option>
                 <option value="matematicas">Matemáticas</option>
                 <option value="conocimiento">Conocimiento del Medio / Ciencias</option>
-                <option value="lengua">Lengua Castellana</option>
-                <option value="valencia">Valencià</option>
+                <option value="lengua">Lengua Castellana y Literatura</option>
+                <option value="valencia">Valencià: Llengua i Literatura</option>
+                <option value="artistica">Educación Artística (Música y Plástica)</option>
+                <option value="educacion-fisica">Educación Física y Salud</option>
+                <option value="valores">Valores Cívicos y Éticos</option>
               </select>
             </div>
             <div>
@@ -256,7 +262,12 @@ export const FlashcardsModule: React.FC<FlashcardsModuleProps> = ({
               { id: 'all', label: 'Cola Inteligente (Todas)' },
               { id: 'ingles', label: 'Inglés' },
               { id: 'matematicas', label: 'Matemáticas' },
-              { id: 'conocimiento', label: 'Conocimiento del Medio' },
+              { id: 'conocimiento', label: 'Conocimiento' },
+              { id: 'lengua', label: 'Lengua Castellana' },
+              { id: 'valencia', label: 'Valencià' },
+              { id: 'artistica', label: 'Música y Plástica' },
+              { id: 'educacion-fisica', label: 'E. Física' },
+              { id: 'valores', label: 'Valores' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -266,7 +277,7 @@ export const FlashcardsModule: React.FC<FlashcardsModuleProps> = ({
                   setCurrentIndex(0);
                   setIsFlipped(false);
                 }}
-                className={`px-3.5 py-2 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
                   subjectFilter === tab.id
                     ? 'bg-white text-[#0F172A] shadow-xs'
                     : 'text-slate-600 hover:text-[#0F172A]'
